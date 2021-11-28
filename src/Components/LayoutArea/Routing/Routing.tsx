@@ -15,6 +15,7 @@ function Routing(): JSX.Element {
             <Switch>
 
                 <Route path="/home" component={Main} exact />
+                <Route path="/login" component={Login} exact />
 
                 {/* <Route path="/admin" component={AdminMain} />
                 <Route path="/company" component={CompanyMain} />
@@ -24,7 +25,7 @@ function Routing(): JSX.Element {
                 <Route path="/login" component={Login} exact />
                 <Route path="/logout" component={Logout} exact /> */}
 
-                <Redirect from="/" to="home" exact />
+                <Redirect from="/" to="/home" exact />
                 
                 {/* <Route component={Page404} /> */}
 
