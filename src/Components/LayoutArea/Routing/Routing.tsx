@@ -14,6 +14,7 @@ function Routing(): JSX.Element {
 
             <Switch>
 
+                <Route path="" component={Main} exact />
                 <Route path="/layout" component={Main} exact />
 
                 {/* <Route path="/admin" component={AdminMain} />
