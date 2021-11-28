@@ -21,9 +21,9 @@ function Routing(): JSX.Element {
                 <Route path="/company" component={CompanyMain} />
                 <Route path="/customer" component={CustomerMain} /> */}
 
-                {/* <Route path="/register" component={Register} exact />
+                <Route path="/register" component={Register} exact />
                 <Route path="/login" component={Login} exact />
-                <Route path="/logout" component={Logout} exact /> */}
+                <Route path="/logout" component={Logout} exact />
 
                 {/* <Redirect from="/" to="layout" exact /> */}
                 
