@@ -1,0 +1,41 @@
+.JumbotronContainer {
+    margin: 0 auto;
+    max-width: 1300px;
+    padding: 0 10px;
+}
+
+.btn {
+    color: #fff;
+    background: #000;
+    padding: 10px 40px;
+    text-decoration: none; 
+    transition: background .5s; 
+}
+
+.Jumbotron {
+    background-image: url('../../../Assets/Images/HomeJumbotron.jpg');
+    background-size: cover;
+    height: 600px; 
+}
+  
+.Jumbotron .JumbotronContainer {
+    position: relative;
+    top: 110px;
+}
+  
+.Jumbotron > .JumbotronContainer > h2 {
+    font-weight: bold;
+    color: #fff;
+    text-align: right; 
+}
+  
+.Jumbotron p {
+    color: #fff; 
+    text-align: right; 
+}
+  
+.Jumbotron .btn {
+    margin: 10px 0 0;
+    float: right; 
+}
+  

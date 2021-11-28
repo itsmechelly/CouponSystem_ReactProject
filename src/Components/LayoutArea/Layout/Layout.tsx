@@ -1,10 +1,23 @@
-import "./Layout.css";
+import { BrowserRouter } from "react-router-dom";
+import AuthMenu from "../../AuthArea/AuthMenu/AuthMenu";
+import Footer from "../Footer/Footer";
+import Routing from "../Routing/Routing";
 
 function Layout(): JSX.Element {
     return (
-        <div className="Layout">
-			<h1>BH</h1>
-        </div>
+        <BrowserRouter>
+            <div className="Layout">
+                <header>
+                    <AuthMenu />
+                </header>
+                <main>
+                    <Routing />
+                </main>
+                <footer className="footer">
+                    <Footer />
+                </footer>
+            </div>
+        </BrowserRouter>
     );
 }
 

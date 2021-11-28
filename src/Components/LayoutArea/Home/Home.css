@@ -1,0 +1,26 @@
+.HomeContainer {
+    margin: 0 auto;
+    max-width: 1222px;
+    padding: 0 5px;
+}
+
+.Home .HomeContainer {
+    margin: 70px auto;
+    margin-top: 100px;
+}
+
+.Home h2 {
+    font-weight: bold;
+}
+
+.LogoImg {
+    float: left;
+    display: block; 
+    position: center;
+    margin: 0px 0px 150px 150px;
+    height: 50%;
+    width: 20%;
+    margin-top: -80px;
+    margin-left: 30px;
+    margin-right: 100px;
+}

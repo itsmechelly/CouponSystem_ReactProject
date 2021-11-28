@@ -1,0 +1,9 @@
+.Register input {
+	width: 250px;
+    box-sizing: border-box;
+}
+
+.Register button {
+    width: 250px;
+    margin: 10px 0;
+}

@@ -1,0 +1,19 @@
+.FooterContainer {
+    margin: 0 auto;
+    max-width: 940px;
+    padding: 0 10px;
+  }
+  
+.Footer { 
+    background: #000;
+    height: 80px; 
+    padding-bottom: 50px;
+  }
+  
+.Footer > .FooterContainer > p { 
+    color: #fff;
+    font-size: 14px;  
+    height: 80px; 
+    line-height: 80px;
+    margin: 0;  
+}
