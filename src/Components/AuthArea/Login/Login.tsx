@@ -106,16 +106,16 @@ function Login(): JSX.Element {
                                 pattern: { value: /^[a-zA-Z0-9]+$/gi, message: "Password is not valid, only letters and numbers are permitted." }
                             })}
                             type={state.showPassword ? 'text' : 'password'}
-                            InputProps={{
-                                endAdornment:
-                                    <InputAdornment position="end">
-                                        <IconButton
-                                            aria-label="toggle password visibility"
-                                            onClick={handleClickShowPassword} edge="end">
-                                            {state.showPassword ? <Visibility /> : <VisibilityOff />}
-                                        </IconButton>
-                                    </InputAdornment>,
-                            }}
+                            // InputProps={{
+                            //     endAdornment:
+                            //         <InputAdornment position="end">
+                            //             <IconButton
+                            //                 aria-label="toggle password visibility"
+                            //                 onClick={handleClickShowPassword} edge="end">
+                            //                 {state.showPassword ? <Visibility /> : <VisibilityOff />}
+                            //             </IconButton>
+                            //         </InputAdornment>,
+                            // }}
                             error={!!errors.password}
                             helperText={errors.password?.message}
                         />
