@@ -1,0 +1,151 @@
+/* .GetOneCustomer *, * {
+    margin: 0;
+    box-sizing: border-box;
+}
+  
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+  
+.Column {
+    float: left;
+    width: 100%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+}
+  
+.Card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 8px;
+}
+
+.Container {
+    padding: 16PX 16px;
+}
+  
+.Container::after, .Row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+  
+.CustomerId {
+    color: grey;
+}
+  
+.Button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+}
+  
+.Button:hover {
+    background-color: #555;
+}
+  
+@media screen and (max-width: 1650px) {
+.Column {
+      width: 100%;
+      display: block;
+    }
+} */
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+.GetOneCustomer1 *, * {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.GetOneCustomer1 .Card1 {
+    max-width: 300px;
+    margin: auto;
+}
+
+.GetOneCustomer1 .Card1 .Container1 {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.287);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+}
+
+.GetOneCustomer1 .Container1 {
+    float: left;
+    width:  100%;
+    max-height: 600px;
+    margin-bottom: 20px;
+    object-fit: cover;
+}
+/*  */
+.GetOneCustomer1 .Container1 {
+    height: 180px;
+}
+
+.GetOneCustomer1 .CompanyId1 {
+    color: grey;
+    font-size: 18px;
+}
+
+.GetOneCustomer1 .Container1 > button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 17px;
+}
+  
+.GetOneCustomer1 .Container1 > button {
+    margin: 0;
+    top: 95%;
+    left: 50%;
+    margin-bottom: 3px;
+}
+
+.GetOneCustomer1 .Card1 button:hover {
+    opacity: 0.7;
+}
+
+@media screen and (max-width: 650px) {
+    .GetOneCustomer1 .Column1 {
+        width: 100%;
+        display: block;
+    }
+}
+
+@media screen and (min-width: 650px) {
+    .GetOneCustomer1 .Column1 {
+        width: 100%;
+        display: block;
+    }
+}
+
+.GetOneCustomer1 {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.GetOneCustomer1 .MainHeader1 {
+    padding: 50px;
+    text-align: center;
+    background-color: #474e5d;
+    color: white;
+}
+
+.CustomerImg1 {
+    float: left;
+    width:  100%;
+    height: 255px;
+    object-fit: cover;
+}

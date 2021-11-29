@@ -1,0 +1,77 @@
+.CustomersCard *, * {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.CustomersCard .Card {
+    max-width: 300px;
+    margin: auto;
+}
+
+.CustomersCard > img {
+    float: left;
+    width:  280px;
+    height: 280px;
+    object-fit: cover;
+}
+
+.CustomersCard .Card .Container {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.287);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+}
+
+.CustomersCard .Container {
+    float: left;
+    width:  100%;
+    max-height: 600px;
+    margin-bottom: 20px;
+    object-fit: cover;
+}
+
+.CustomersCard .Container .CardData {
+    height: 220px;
+}
+
+.CustomersCard .CompanyId {
+    color: grey;
+    font-size: 18px;
+}
+
+.CustomersCard .Container > button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 17px;
+}
+  
+.CustomersCard .Container > button {
+    margin: 0;
+    top: 95%;
+    left: 50%;
+    margin-bottom: 3px;
+}
+
+.CustomersCard .Card button:hover {
+    opacity: 0.7;
+}
+
+@media screen and (max-width: 650px) {
+    .CustomersCard .Column {
+        width: 100%;
+        display: block;
+    }
+}
+
+@media screen and (min-width: 650px) {
+    .CustomersCard .Column {
+        width: 100%;
+        display: block;
+    }
+}

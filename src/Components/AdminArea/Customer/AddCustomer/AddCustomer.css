@@ -1,0 +1,46 @@
+.AddCustomer  input[type=text], input[type=email], input[type=password],input[type=date], input[type=list], input[type=file], option, select, textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+  
+.AddCustomer input[type=file] {
+    background-color: #fafafa;
+    border: 1px solid #ccc;
+}
+
+.AddCustomer .Group {
+    margin-top: 22px;
+}
+
+.AddCustomer .A, .AddCustomer .B  {
+    background-color: #205c6b8a;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.AddCustomer .A {
+    margin-right: 12px;
+}
+
+.AddCustomer .B {
+    margin-left: 12px;
+}
+
+.AddCustomer button:hover, .AddCustomer .Reset:hover {
+    background-color: #346d7c;
+}
+  
+.AddCustomer {
+    border-radius: 5px;
+    background-color: #9ddeee6f;
+    padding: 20px;
+    margin: 55px;
+}
