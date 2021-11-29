@@ -1,0 +1,46 @@
+.AddCompany  input[type=text], input[type=email], input[type=password],input[type=date], input[type=list], input[type=file], option, select, textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+  }
+  
+  .AddCompany input[type=file] {
+    background-color: #fafafa;
+    border: 1px solid #ccc;
+  }
+
+  .AddCompany .Group {
+      margin-top: 22px;
+  }
+
+  .AddCompany .A, .AddCompany .B  {
+    background-color: #205c6b8a;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.AddCompany .A {
+      margin-right: 12px;
+  }
+
+.AddCompany .B {
+      margin-left: 12px;
+  }
+
+  .AddCompany button:hover, .AddCompany .Reset:hover {
+    background-color: #346d7c;
+  }
+  
+  .AddCompany {
+    border-radius: 5px;
+    background-color: #9ddeee6f;
+    padding: 20px;
+    margin: 55px;
+  }
