@@ -76,6 +76,51 @@ function AddCompanyCoupon(): JSX.Element {
                     Add Company Coupon
                 </Typography>
 
+                {/* <form onSubmit={handleSubmit(send)}> */}
+                <form>
+
+                    <TextField
+                        label="Coupon Title"
+                        variant="outlined"
+                        margin="normal"
+                        fullWidth
+                        type="text"
+                        autoFocus
+                        inputProps={{ pattern: "/^[a-zA-Z0-9]+$/gi", minLength: 2, }}
+                        {...register("title", {
+                            required: { value: true, message: "Missing title." },
+                            minLength: { value: 2, message: "Title is too short, should be at least 2 characters." },
+                            pattern: { value: /^[a-zA-Z0-9]+$/gi, message: "Title is not valid, only letters and numbers are permitted." }
+                        })}
+                        error={!!errors.title}
+                        helperText={errors.title?.message}
+                    />
+                    <br />
+{/* 
+                    <TextField
+                        label="Coupon Category"
+                        variant="outlined"
+                        margin="normal"
+                        name="category"
+                        select
+                        fullWidth
+                        inputProps={{ pattern: "/^((?!CategoryList).)*$/", }}
+                        {...register("category", {
+                            required: { value: true, message: "Missing category." },
+                            pattern: { value: /^((?!CategoryList).)*$/, message: "Not selected, please choose one category." }
+                        })}
+                        SelectProps={{ native: true }}
+                        error={!!errors.category}
+                        helperText={errors.category?.message}
+                    >
+                        <option value="CategoryList">Choose Category</option>
+                        {Object.values(CategoryType).map(val =>
+                            <option value={val}>{val.toString().charAt(0).toLocaleUpperCase().concat(val.substring(1).toLocaleLowerCase())}</option>
+                        )}
+                    </TextField>
+                    <br /> */}
+
+                </form>
             </div>
         </div >
     );
