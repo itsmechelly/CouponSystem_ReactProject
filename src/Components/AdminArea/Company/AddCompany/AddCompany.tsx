@@ -1,3 +1,5 @@
+import { Button, ButtonGroup, TextField, Typography } from "@material-ui/core";
+import { Add, ClearAll, Send } from "@material-ui/icons";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router";
@@ -50,7 +52,97 @@ function AddCompany(): JSX.Element {
     return (
         <div className="AddCompany">
             <div className="Container">
-                <h1>hi</h1>
+
+                <Add />
+                <Typography variant="h3" className="Headline">
+                    Add Company
+                </Typography>
+
+                <form onSubmit={handleSubmit(send)}>
+
+                    <TextField
+                        label="Company Name"
+                        variant="outlined"
+                        margin="normal"
+                        fullWidth
+                        autoFocus
+                        inputProps={{ pattern: "/^[a-zA-Z0-9]+$/gi", minLength: 4, }}
+                        {...register("name", {
+                            required: { value: true, message: "Missing name." },
+                            minLength: { value: 4, message: "Company Name is too short, should be at least 4 characters." },
+                            pattern: { value: /^[a-zA-Z0-9]+$/gi, message: "Company name is not valid, only letters and numbers are permitted." }
+                        })}
+                        error={!!errors.name}
+                        helperText={errors.name?.message}
+                    />
+
+                    <TextField
+                        label="Company Email"
+                        variant="outlined"
+                        margin="normal"
+                        fullWidth
+                        type="email"
+                        autoComplete="email"
+                        inputProps={{ pattern: "/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/", }}
+                        {...register("email", {
+                            required: { value: true, message: "Missing email." },
+                            pattern: { value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/, message: "Email is not valid." }
+                        })}
+                        error={!!errors.email}
+                        helperText={errors.email?.message}
+                    />
+
+                    <TextField
+                        label="Company Password"
+                        variant="outlined"
+                        margin="normal"
+                        fullWidth
+                        autoComplete="current-password"
+                        inputProps={{ pattern: "/^[a-zA-Z0-9]+$/gi", minLength: 4, }}
+                        {...register("password", {
+                            required: { value: true, message: "Missing password." },
+                            minLength: { value: 4, message: "Password too short, should be at least 4 characters." },
+                            pattern: { value: /^[a-zA-Z0-9]+$/gi, message: "Password is not valid, only letters and numbers are permitted." }
+                        })}
+                        type={state.showPassword ? 'text' : 'password'}
+                        // InputProps={{
+                        //     endAdornment:
+                        //         <InputAdornment position="end">
+                        //             <IconButton
+                        //                 aria-label="toggle password visibility"
+                        //                 onClick={handleClickShowPassword} edge="end">
+                        //                 {state.showPassword ? <Visibility /> : <VisibilityOff />}
+                        //             </IconButton>
+                        //         </InputAdornment>
+                        // }}
+                        error={!!errors.password}
+                        helperText={errors.password?.message}
+                    />
+
+                    <ButtonGroup className="Group" variant="text" fullWidth>
+
+                        <Button
+                            className="A"
+                            startIcon={<Send />}
+                            type="submit"
+                            color="primary"
+                            variant="contained">
+                            Confirm
+                        </Button>
+
+                        <Button
+                            className="B"
+                            startIcon={<ClearAll />}
+                            type="reset"
+                            color="secondary"
+                            variant="contained">
+                            Reset
+                        </Button>
+
+                    </ButtonGroup>
+
+                </form>
+
             </div>
         </div >
     );
