@@ -1,6 +1,6 @@
 import { Switch, Route } from "react-router-dom";
 import CustomerHome from "../../../CustomerArea/CustomerHome/CustomerHome";
-import GetAllCouponsByCategory from "../../../CustomerArea/GetAllCouponsByCategory/GetAllCouponsByCategory";
+import GetAllCouponsByCategory from "../../../CustomerArea/GetAllCustomerCouponsByCategory/GetAllCustomerCouponsByCategory";
 import GetAllCouponsByMaxPrice from "../../../CustomerArea/GetAllCouponsByMaxPrice/GetAllCouponsByMaxPrice";
 import GetAllCustomerCoupons from "../../../CustomerArea/GetAllCustomerCoupons/GetAllCustomerCoupons";
 import GetCustomerDetails from "../../../CustomerArea/GetCustomerDetails/GetCustomerDetails";
