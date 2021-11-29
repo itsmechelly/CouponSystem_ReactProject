@@ -33,7 +33,7 @@ function Login(): JSX.Element {
 
     let { register, handleSubmit, formState: { errors } } = useForm<CredentialsModel>({ mode: "all" });
     const [state, setState] = useState<LoginState>({ showPassword: false });
-    const classes = useHistory();
+    const classes = useStyles();
     const history = useHistory();
 
     const handleClickShowPassword = () => {
@@ -59,9 +59,10 @@ function Login(): JSX.Element {
     }
 
     return (
-        // <Grid container component="main" className={classes.root}>
-        <h1>hiush (: ani po </h1>
-        // </Grid>
+        <Grid container component="main" className={classes.root}>
+            <CssBaseline />
+            <h1>hiush (: ani po </h1>
+        </Grid>
     );
 }
 
