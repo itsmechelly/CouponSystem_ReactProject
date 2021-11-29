@@ -74,7 +74,109 @@ function Login(): JSX.Element {
                     <Typography component="h1" variant="h5">
                         Sign in
                     </Typography>
-                    
+
+                    <form onSubmit={handleSubmit(send)} className={classes.form} noValidate>
+
+                        <TextField
+                            label="Email Address"
+                            variant="outlined"
+                            margin="normal"
+                            fullWidth
+                            type="email"
+                            autoComplete="email"
+                            {...register("email", {
+                                required: { value: true, message: "Missing email." },
+                                pattern: { value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/, message: "Email is not valid." }
+                            })}
+                            error={!!errors.email}
+                            helperText={errors.email?.message}
+                        />
+
+                        <TextField
+                            label="Password"
+                            variant="outlined"
+                            margin="normal"
+                            fullWidth
+                            autoComplete="current-password"
+                            {...register("password", {
+                                required: { value: true, message: "Missing password." },
+                                minLength: { value: 4, message: "Password too short, should be at least 4 characters." },
+                                pattern: { value: /^[a-zA-Z0-9]+$/gi, message: "Password is not valid, only letters and numbers are permitted." }
+                            })}
+                            type={state.showPassword ? 'text' : 'password'}
+                            InputProps={{
+                                endAdornment:
+                                    <InputAdornment position="end">
+                                        <IconButton
+                                            aria-label="toggle password visibility"
+                                            onClick={handleClickShowPassword} edge="end">
+                                            {state.showPassword ? <Visibility /> : <VisibilityOff />}
+                                        </IconButton>
+                                    </InputAdornment>
+                            }}
+                            error={!!errors.password}
+                            helperText={errors.password?.message}
+                        />
+
+                        <br />
+                        <br />
+
+                        <TextField
+                            name="clientType"
+                            fullWidth
+                            select
+                            required
+                            className="mui-input"
+                            label="Client type" variant="outlined"
+                            defaultValue={"clientType"}
+                            SelectProps={{ native: true }}
+                            {...register("clientType", {
+                                required: { value: true, message: "Missing client type." }
+                            })}
+                            error={!!errors.clientType}
+                            helperText={errors.clientType?.message}
+                        >
+                            <option value=""></option>
+                            <option value="ADMIN">Admin</option>
+                            <option value="COMPANY">Company</option>
+                            <option value="CUSTOMER">Customer</option>
+                        </TextField>
+
+                        <br />
+                        <br />
+
+                        <FormControlLabel
+                            control={<Checkbox value="remember" color="primary" />}
+                            label="Remember me"
+                        />
+
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            color="primary"
+                            className={classes.submit}>
+                            Sign In
+                        </Button>
+
+                        <Grid container>
+                            <Grid item xs>
+                                <Link href="#" variant="body2">
+                                    Forgot password?
+                                </Link>
+                            </Grid>
+                            <Grid item>
+                                <Link href="#" variant="body2">
+                                    {"Don't have an account? Sign Up"}
+                                </Link>
+                            </Grid>
+                        </Grid>
+
+                        <Box mt={5}>
+                            <Copyright />
+                        </Box>
+
+                    </form>
                 </div>
             </Grid>
         </Grid>
