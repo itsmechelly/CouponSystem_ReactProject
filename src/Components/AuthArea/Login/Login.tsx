@@ -99,14 +99,15 @@ function Login(): JSX.Element {
                             margin="normal"
                             fullWidth
                             autoComplete="current-password"
-                            inputProps={{ pattern: "/^[a-zA-Z0-9]+$/gi", }}
+                            // inputProps={{ pattern: "/^[a-zA-Z0-9]+$/gi", minLength: 4, }}
                             {...register("password", {
                                 required: { value: true, message: "Missing password." },
-                                // minLength: { value: 4, message: "Password too short, should be at least 4 characters." },
+                                minLength: { value: 4, message: "Password too short, should be at least 4 characters." },
                                 pattern: { value: /^[a-zA-Z0-9]+$/gi, message: "Password is not valid, only letters and numbers are permitted." }
                             })}
                             type={state.showPassword ? 'text' : 'password'}
-                            InputProps={{
+                            inputProps={{
+                                pattern: "/^[a-zA-Z0-9]+$/gi", minLength: 4, 
                                 endAdornment:
                                     <InputAdornment position="end">
                                         <IconButton
@@ -114,7 +115,7 @@ function Login(): JSX.Element {
                                             onClick={handleClickShowPassword} edge="end">
                                             {state.showPassword ? <Visibility /> : <VisibilityOff />}
                                         </IconButton>
-                                    </InputAdornment>
+                                    </InputAdornment>,
                             }}
                             error={!!errors.password}
                             helperText={errors.password?.message}
