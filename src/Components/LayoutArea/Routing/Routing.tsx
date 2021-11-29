@@ -2,10 +2,10 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import Login from "../../AuthArea/Login/Login";
 import Logout from "../../AuthArea/Logout/Logout";
 import Register from "../../AuthArea/Register/Register";
+import Page404 from "../../SharedArea/Page404/Page404";
 import Main from "../Main/Main";
 // import AdminMain from "../../AdminArea/AdminMain/AdminMain";
 // import CustomerMain from "../../CustomerArea/CustomerMain/CustomerMain";
-// import Page404 from "../../SharedArea/Page404/Page404";
 // import CompanyMain from "../../CompanyArea/CompanyMain/CompanyMain";
 
 function Routing(): JSX.Element {
@@ -26,7 +26,7 @@ function Routing(): JSX.Element {
 
                 <Redirect from="/" to="/layout" exact />
 
-                {/* <Route component={Page404} /> */}
+                <Route component={Page404} />
 
             </Switch>
         </div>
