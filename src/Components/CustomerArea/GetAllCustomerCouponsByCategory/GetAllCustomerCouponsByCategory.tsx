@@ -1,18 +1,18 @@
-import { Select, MenuItem } from "@material-ui/core";
 import { Component } from "react";
+import "./GetAllCustomerCouponsByCategory.css";
+import { Select, MenuItem } from "@material-ui/core";
 import CouponModel from "../../../Models/CouponModel";
 import globals from "../../../Services/Globals";
 import jwtAxios from "../../../Services/jwtAxios";
 import notify from "../../../Services/Notification";
 import CouponsCard from "../CouponsCard/CouponsCard";
-import "./GetAllCouponsByCategory.css";
 
-interface GetCustomerCouponsByCategoryState {
+interface GetAllCustomerCouponsByCategoryState {
     coupons: CouponModel[];
 }
 
-class GetCustomerCouponsByCategory extends Component<{}, GetCustomerCouponsByCategoryState> {
-   
+class GetAllCustomerCouponsByCategory extends Component<{}, GetAllCustomerCouponsByCategoryState>  {
+
     public constructor(props: {}) {
         super(props);
         this.state = {
@@ -22,7 +22,7 @@ class GetCustomerCouponsByCategory extends Component<{}, GetCustomerCouponsByCat
 
     public render(): JSX.Element {
         return (
-            <div className="GetAllCouponsByCategory">
+            <div className="GetAllCustomerCouponsByCategory">
                 <>
                     <div className="Select">
 
@@ -71,4 +71,4 @@ class GetCustomerCouponsByCategory extends Component<{}, GetCustomerCouponsByCat
     }
 }
 
-export default GetCustomerCouponsByCategory;
+export default GetAllCustomerCouponsByCategory;
