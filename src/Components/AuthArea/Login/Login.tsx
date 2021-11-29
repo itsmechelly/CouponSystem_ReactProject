@@ -84,6 +84,7 @@ function Login(): JSX.Element {
                             fullWidth
                             type="email"
                             autoComplete="email"
+                            inputProps={{ pattern: "/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/", message: "Email is not valid." }}
                             {...register("email", {
                                 required: { value: true, message: "Missing email." },
                                 // pattern: { value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/, message: "Email is not valid." }
@@ -146,5 +147,4 @@ const useStyles = makeStyles((theme) => ({
     submit: {
         margin: theme.spacing(3, 0, 2),
     },
-
 }));
