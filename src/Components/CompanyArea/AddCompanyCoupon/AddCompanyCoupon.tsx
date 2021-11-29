@@ -1,4 +1,4 @@
-import { Button, ButtonGroup, createStyles, FormControl, FormHelperText, makeStyles, MenuItem, OutlinedInput, Select, TextField, Theme, Typography, withWidth } from "@material-ui/core";
+import { Button, ButtonGroup, FormControl, FormHelperText, TextField, Typography } from "@material-ui/core";
 import { couponsAddedAction } from "../../../Redux/CouponsState";
 import { Add, ClearAll, Send } from "@material-ui/icons";
 import { ClientType } from "../../../Models/UserModel";
@@ -8,31 +8,16 @@ import jwtAxios from "../../../Services/jwtAxios";
 import globals from "../../../Services/Globals";
 import { useForm } from "react-hook-form";
 import store from "../../../Redux/Store";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./AddCompanyCoupon.css";
 import { CategoryType } from "../../../Models/CategoryType";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 
-// const useStyles = makeStyles((theme: Theme) =>
-//     createStyles({
-//         container: {
-//             display: 'flex',
-//             flexWrap: 'wrap',
-//         },
-//         textField: {
-//             maxWidth: 250
-//         },
-//         input: {
-//             backgroundColor: '#ffffff',
-//         }
-//     }),
-// );
 
 function AddCompanyCoupon(): JSX.Element {
 
     let { register, handleSubmit, formState: { errors }, getValues } = useForm<CouponModel>({ mode: "all" });
     const history = useHistory();
-    // const classes = useStyles();
 
     useEffect(() => {
         if (store.getState().AuthState.user?.clientType !== ClientType.COMPANY) {
