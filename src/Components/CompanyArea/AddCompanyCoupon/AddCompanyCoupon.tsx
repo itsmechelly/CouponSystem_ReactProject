@@ -113,12 +113,12 @@ function AddCompanyCoupon(): JSX.Element {
                         inputProps={{
                             step: 0.01,
                             min: 0.01,
-                            pattern: "/^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$/",
+                            pattern: "/^[+]?([0-9]+(?:[.][0-9]*)?|.[0-9]+)$/",
                         }}
                         {...register("price", {
                             required: { value: true, message: "Missing price." },
                             min: { value: 0.01, message: "Price must be above value 0.01." },
-                            pattern: { value: /^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$/, message: "Price is not valid, only positive and decimal numbers are permitted." }
+                            pattern: { value: /^[+]?([0-9]+(?:[.][0-9]*)?|\.[0-9]+)$/, message: "Price is not valid, only positive and decimal numbers are permitted." }
                         })}
                         error={!!errors.price}
                         helperText={errors.price?.message}
