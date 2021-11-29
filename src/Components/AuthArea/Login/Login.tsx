@@ -99,24 +99,23 @@ function Login(): JSX.Element {
                             margin="normal"
                             fullWidth
                             autoComplete="current-password"
-                            // inputProps={{ pattern: "/^[a-zA-Z0-9]+$/gi", minLength: 4, }}
+                            inputProps={{ pattern: "/^[a-zA-Z0-9]+$/gi", minLength: 4, }}
                             {...register("password", {
                                 required: { value: true, message: "Missing password." },
                                 minLength: { value: 4, message: "Password too short, should be at least 4 characters." },
                                 pattern: { value: /^[a-zA-Z0-9]+$/gi, message: "Password is not valid, only letters and numbers are permitted." }
                             })}
                             type={state.showPassword ? 'text' : 'password'}
-                            inputProps={{
-                                pattern: "/^[a-zA-Z0-9]+$/gi", minLength: 4,
-                                // endAdornment:
-                                //     <InputAdornment position="end">
-                                //         <IconButton
-                                //             aria-label="toggle password visibility"
-                                //             onClick={handleClickShowPassword} edge="end">
-                                //             {state.showPassword ? <Visibility /> : <VisibilityOff />}
-                                //         </IconButton>
-                                //     </InputAdornment>,
-                            }}
+                            // InputProps={{
+                            //     endAdornment:
+                            //         <InputAdornment position="end">
+                            //             <IconButton
+                            //                 aria-label="toggle password visibility"
+                            //                 onClick={handleClickShowPassword} edge="end">
+                            //                 {state.showPassword ? <Visibility /> : <VisibilityOff />}
+                            //             </IconButton>
+                            //         </InputAdornment>,
+                            // }}
                             error={!!errors.password}
                             helperText={errors.password?.message}
                         />
@@ -147,6 +146,37 @@ function Login(): JSX.Element {
 
                         <br />
                         <br />
+
+                        <FormControlLabel
+                            control={<Checkbox value="remember" color="primary" />}
+                            label="Remember me"
+                        />
+
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            color="primary"
+                            className={classes.submit}>
+                            Sign In
+                        </Button>
+
+                        <Grid container>
+                            <Grid item xs>
+                                <Link href="#" variant="body2">
+                                    Forgot password?
+                                </Link>
+                            </Grid>
+                            <Grid item>
+                                <Link href="#" variant="body2">
+                                    {"Don't have an account? Sign Up"}
+                                </Link>
+                            </Grid>
+                        </Grid>
+
+                        <Box mt={5}>
+                            <Copyright />
+                        </Box>
 
                     </form>
                 </div>
