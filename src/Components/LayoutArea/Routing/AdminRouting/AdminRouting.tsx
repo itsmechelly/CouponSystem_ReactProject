@@ -18,7 +18,7 @@ function AdminRouting(): JSX.Element {
             <Switch>
                 <Route path="/admin" component={AdminHome} exact />
                 {/* <Route path="/admin/addCompany" component={AddCompany} exact /> */}
-                {/* <Route path="/admin/updateCompany/:id" component={UpdateCompany} exact /> */}
+                <Route path="/admin/updateCompany/:id" component={UpdateCompany} exact />
                 <Route path="/admin/deleteCompany" component={DeleteCompany} exact />
                 <Route path="/admin/getOneCompany/:id" component={GetOneCompany} exact />
                 <Route path="/admin/getAllCompanies" component={GetAllCompanies} exact />
