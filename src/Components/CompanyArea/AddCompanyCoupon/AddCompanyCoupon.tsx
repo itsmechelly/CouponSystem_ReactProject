@@ -1,4 +1,4 @@
-import { Button, ButtonGroup, FormControl, FormHelperText, TextField, Typography } from "@material-ui/core";
+import { Button, ButtonGroup, createStyles, FormControl, FormHelperText, makeStyles, MenuItem, OutlinedInput, Select, TextField, Theme, Typography, withWidth } from "@material-ui/core";
 import { couponsAddedAction } from "../../../Redux/CouponsState";
 import { Add, ClearAll, Send } from "@material-ui/icons";
 import { ClientType } from "../../../Models/UserModel";
@@ -6,23 +6,38 @@ import CouponModel from "../../../Models/CouponModel";
 import notify from "../../../Services/Notification";
 import jwtAxios from "../../../Services/jwtAxios";
 import globals from "../../../Services/Globals";
+import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import store from "../../../Redux/Store";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./AddCompanyCoupon.css";
 import { CategoryType } from "../../../Models/CategoryType";
-import { useHistory } from "react-router-dom";
 
+// const useStyles = makeStyles((theme: Theme) =>
+//     createStyles({
+//         container: {
+//             display: 'flex',
+//             flexWrap: 'wrap',
+//         },
+//         textField: {
+//             maxWidth: 250
+//         },
+//         input: {
+//             backgroundColor: '#ffffff',
+//         }
+//     }),
+// );
 
 function AddCompanyCoupon(): JSX.Element {
 
     let { register, handleSubmit, formState: { errors }, getValues } = useForm<CouponModel>({ mode: "all" });
-    // const history = useHistory();
+    const history = useHistory();
+    // const classes = useStyles();
 
     useEffect(() => {
         if (store.getState().AuthState.user?.clientType !== ClientType.COMPANY) {
             notify.error("Please log in");
-            // history.push("/login");
+            history.push("/login");
         }
     }, []);
 
@@ -43,7 +58,7 @@ function AddCompanyCoupon(): JSX.Element {
             const addedCoupon = response.data;
             store.dispatch(couponsAddedAction(addedCoupon));
             notify.success("Coupon has been added! coupon name: " + addedCoupon.title);
-            // history.push("/company/getAllCompaniesCoupons");
+            history.push("/company/getAllCompaniesCoupons");
         } catch (err) {
             notify.error(err);
             // if (err.response.data.status === 401) {
@@ -70,7 +85,6 @@ function AddCompanyCoupon(): JSX.Element {
                         fullWidth
                         type="text"
                         autoFocus
-                        inputProps={{ pattern: "/^[a-zA-Z0-9]+$/gi", minLength: 2, }}
                         {...register("title", {
                             required: { value: true, message: "Missing title." },
                             minLength: { value: 2, message: "Title is too short, should be at least 2 characters." },
@@ -88,7 +102,6 @@ function AddCompanyCoupon(): JSX.Element {
                         name="category"
                         select
                         fullWidth
-                        inputProps={{ pattern: "/^((?!CategoryList).)*$/", }}
                         {...register("category", {
                             required: { value: true, message: "Missing category." },
                             pattern: { value: /^((?!CategoryList).)*$/, message: "Not selected, please choose one category." }
@@ -113,12 +126,11 @@ function AddCompanyCoupon(): JSX.Element {
                         inputProps={{
                             step: 0.01,
                             min: 0.01,
-                            pattern: "/^[+]?([0-9]+(?:[.][0-9]*)?|.[0-9]+)$/",
                         }}
                         {...register("price", {
                             required: { value: true, message: "Missing price." },
                             min: { value: 0.01, message: "Price must be above value 0.01." },
-                            pattern: { value: /^[+]?([0-9]+(?:[.][0-9]*)?|\.[0-9]+)$/, message: "Price is not valid, only positive and decimal numbers are permitted." }
+                            pattern: { value: /^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$/, message: "Price is not valid, only positive and decimal numbers are permitted." }
                         })}
                         error={!!errors.price}
                         helperText={errors.price?.message}
@@ -133,7 +145,6 @@ function AddCompanyCoupon(): JSX.Element {
                         type="number"
                         inputProps={{
                             min: 1,
-                            pattern: "/^[0-9]+$/gi",
                         }}
                         {...register("amount", {
                             required: { value: true, message: "Missing amount." },
@@ -196,7 +207,6 @@ function AddCompanyCoupon(): JSX.Element {
                         type="text"
                         multiline
                         rows="3"
-                        inputProps={{ minLength: 10, }}
                         {...register("description", {
                             required: { value: true, message: "Missing description." },
                             minLength: { value: 10, message: "Description is too short, should be at least 10 characters." }
@@ -221,6 +231,7 @@ function AddCompanyCoupon(): JSX.Element {
                         />
                         <FormHelperText>{errors.imageFile?.message}</FormHelperText>
                     </FormControl>
+
                     <br />
                     <br />
 
@@ -247,6 +258,7 @@ function AddCompanyCoupon(): JSX.Element {
                     </ButtonGroup>
 
                 </form>
+
             </div>
         </div >
     );
