@@ -40,8 +40,26 @@ function Login(): JSX.Element {
         setState({ ...state, showPassword: !state.showPassword });
     };
 
+    async function send(credentials: CredentialsModel) {
+        try {
+            const response = await axios.post<UserModel>(globals.urls.login, credentials);
+            store.dispatch(loginAction(response.data));
+            notify.success("You have been successfully logged in!");
+            if (response.data.clientType === "ADMIN") {
+                history.push("/admin");
+            } else if (response.data.clientType === "COMPANY") {
+                history.push("/company");
+            } else if (response.data.clientType === "CUSTOMER") {
+                history.push("/customer");
+            }
+        }
+        catch (err) {
+            notify.error(err);
+        }
+    }
+
     return (
-        <h1>hiush</h1>
+        <h1>hiush (:</h1>
     );
 }
 
