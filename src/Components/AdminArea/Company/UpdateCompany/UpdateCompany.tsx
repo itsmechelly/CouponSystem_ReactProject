@@ -126,15 +126,13 @@ function UpdateCompany(): JSX.Element {
                         autoFocus
                         type="email"
                         autoComplete="email"
-                        // inputProps={{ pattern: "/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/", }}
+                        inputProps={{ pattern: "/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/", }}
                         {...register("email", {
                             required: { value: true, message: "Missing email." },
-                            // pattern: { value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/, message: "Email is not valid." }
+                            pattern: { value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/, message: "Email is not valid." }
                         })}
                         defaultValue={company?.email}
-                        inputProps={{
-                            onChange: handleChange
-                        }}
+                        // inputProps={{ onChange: handleChange }}
                         error={!!errors.email}
                         helperText={errors.email?.message}
                     />
