@@ -7,7 +7,7 @@ import Page404 from "../../SharedArea/Page404/Page404";
 import Main from "../Main/Main";
 // import AdminMain from "../../AdminArea/AdminMain/AdminMain";
 // import CustomerMain from "../../CustomerArea/CustomerMain/CustomerMain";
-// import CompanyMain from "../../CompanyArea/CompanyMain/CompanyMain";
+import CompanyMain from "../../CompanyArea/CompanyMain/CompanyMain";
 
 function Routing(): JSX.Element {
     return (
@@ -18,7 +18,7 @@ function Routing(): JSX.Element {
                 <Route path="/layout" component={Main} exact />
 
                 <Route path="/admin" component={AdminMain} />
-                {/* <Route path="/company" component={CompanyMain} /> */}
+                <Route path="/company" component={CompanyMain} />
                 {/* <Route path="/customer" component={CustomerMain} /> */}
 
                 <Route path="/register" component={Register} exact />
