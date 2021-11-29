@@ -11,9 +11,9 @@ function CustomerRouting(): JSX.Element {
             <Switch>
                 <Route path="/customer" component={CustomerHome} exact />
                 <Route path="/customer/getAllCustomerCoupons" component={GetAllCustomerCoupons} exact />
-                {/* <Route path="/customer/getAllCouponsByCategory" component={GetAllCouponsByCategory} exact />
+                {/* <Route path="/customer/getAllCouponsByCategory" component={GetAllCouponsByCategory} exact /> */}
                 <Route path="/customer/getAllCouponsUnderMaxPrice" component={GetAllCouponsByMaxPrice} exact />
-                <Route path="/customer/getCustomerDetails" component={GetCustomerDetails} exact /> */}
+                <Route path="/customer/getCustomerDetails" component={GetCustomerDetails} exact />
             </Switch>
         </div>
     );
