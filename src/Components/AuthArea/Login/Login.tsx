@@ -77,6 +77,20 @@ function Login(): JSX.Element {
 
                     <form onSubmit={handleSubmit(send)} className={classes.form} noValidate>
 
+                        <TextField
+                            label="Email Address"
+                            variant="outlined"
+                            margin="normal"
+                            fullWidth
+                            type="email"
+                            autoComplete="email"
+                            {...register("email", {
+                                required: { value: true, message: "Missing email." },
+                                // pattern: { value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/, message: "Email is not valid." }
+                            })}
+                            error={!!errors.email}
+                            helperText={errors.email?.message}
+                        />
 
                     </form>
                 </div>
