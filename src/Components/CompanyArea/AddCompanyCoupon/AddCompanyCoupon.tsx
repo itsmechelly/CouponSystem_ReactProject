@@ -6,12 +6,12 @@ import CouponModel from "../../../Models/CouponModel";
 import notify from "../../../Services/Notification";
 import jwtAxios from "../../../Services/jwtAxios";
 import globals from "../../../Services/Globals";
-import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import store from "../../../Redux/Store";
 import { useEffect, useState } from "react";
 import "./AddCompanyCoupon.css";
 import { CategoryType } from "../../../Models/CategoryType";
+import { useHistory } from "react-router";
 
 // const useStyles = makeStyles((theme: Theme) =>
 //     createStyles({
@@ -76,8 +76,7 @@ function AddCompanyCoupon(): JSX.Element {
                     Add Company Coupon
                 </Typography>
 
-                {/* <form onSubmit={handleSubmit(send)}> */}
-                <form>
+                <form onSubmit={handleSubmit(send)}>
 
                     <TextField
                         label="Coupon Title"
@@ -239,6 +238,28 @@ function AddCompanyCoupon(): JSX.Element {
                     </FormControl>
                     <br />
                     <br />
+
+                    <ButtonGroup className="Group" variant="text" fullWidth>
+
+                        <Button
+                            className="A"
+                            startIcon={<Send />}
+                            type="submit"
+                            color="primary"
+                            variant="contained">
+                            Confirm
+                        </Button>
+
+                        <Button
+                            className="B"
+                            startIcon={<ClearAll />}
+                            type="reset"
+                            color="secondary"
+                            variant="contained">
+                            Reset
+                        </Button>
+
+                    </ButtonGroup>
 
                 </form>
             </div>
