@@ -4,12 +4,9 @@ import AddCompany from "../../../AdminArea/Company/AddCompany/AddCompany";
 import DeleteCompany from "../../../AdminArea/Company/DeleteCompany/DeleteCompany";
 import GetAllCompanies from "../../../AdminArea/Company/GetAllCompanies/GetAllCompanies";
 import GetOneCompany from "../../../AdminArea/Company/GetOneCompany/GetOneCompany";
-import UpdateCompany from "../../../AdminArea/Company/UpdateCompany/UpdateCompany";
-import AddCustomer from "../../../AdminArea/Customer/AddCustomer/AddCustomer";
 import DeleteCustomer from "../../../AdminArea/Customer/DeleteCustomer/DeleteCustomer";
 import GetAllCustomers from "../../../AdminArea/Customer/GetAllCustomers/GetAllCustomers";
 import GetOneCustomer from "../../../AdminArea/Customer/GetOneCustomer/GetOneCustomer";
-import UpdateCustomer from "../../../AdminArea/Customer/UpdateCustomer/UpdateCustomer";
 
 function AdminRouting(): JSX.Element {
     return (
