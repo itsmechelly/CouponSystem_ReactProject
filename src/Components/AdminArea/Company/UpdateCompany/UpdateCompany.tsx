@@ -1,5 +1,5 @@
-import { Button, ButtonGroup, IconButton, InputAdornment, MenuItem, Select, TextField, Typography } from "@material-ui/core";
-import { ClearAll, Edit, Send, Visibility, VisibilityOff } from "@material-ui/icons";
+import { Button, ButtonGroup, TextField, Typography } from "@material-ui/core";
+import { ClearAll, Edit, Send } from "@material-ui/icons";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory, useParams } from "react-router";
@@ -126,6 +126,7 @@ function UpdateCompany(): JSX.Element {
                         autoFocus
                         type="email"
                         autoComplete="email"
+                        // inputProps={{ pattern: "/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/", }}
                         {...register("email", {
                             required: { value: true, message: "Missing email." },
                             pattern: { value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/, message: "Email is not valid." }
@@ -142,6 +143,7 @@ function UpdateCompany(): JSX.Element {
                         margin="normal"
                         fullWidth
                         autoComplete="current-password"
+                        // inputProps={{ pattern: "/^[a-zA-Z0-9]+$/gi", minLength: 4, }}
                         {...register("password", {
                             required: { value: true, message: "Missing password." },
                             minLength: { value: 4, message: "Password too short, should be at least 4 characters." },
@@ -152,14 +154,14 @@ function UpdateCompany(): JSX.Element {
                         type={state.showPassword ? 'text' : 'password'}
                         defaultValue={company?.password}
                         InputProps={{
-                            endAdornment:
-                                <InputAdornment position="end">
-                                    <IconButton
-                                        aria-label="toggle password visibility"
-                                        onClick={handleClickShowPassword} edge="end">
-                                        {state.showPassword ? <Visibility /> : <VisibilityOff />}
-                                    </IconButton>
-                                </InputAdornment>,
+                            // endAdornment:
+                            //     <InputAdornment position="end">
+                            //         <IconButton
+                            //             aria-label="toggle password visibility"
+                            //             onClick={handleClickShowPassword} edge="end">
+                            //             {state.showPassword ? <Visibility /> : <VisibilityOff />}
+                            //         </IconButton>
+                            //     </InputAdornment>,
                             onChange: handleChange
                         }}
                     />
