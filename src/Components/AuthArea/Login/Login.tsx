@@ -22,7 +22,7 @@ import Link from '@material-ui/core/Link';
 import store from "../../../Redux/Store";
 import Box from '@material-ui/core/Box';
 import axios from "axios";
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
 
 interface LoginState {
@@ -32,24 +32,13 @@ interface LoginState {
 function Login(): JSX.Element {
 
     let { register, handleSubmit, formState: { errors } } = useForm<CredentialsModel>({ mode: "all" });
-    // const [state, setState] = useState<LoginState>({ showPassword: false });
+    const [state, setState] = useState<LoginState>({ showPassword: false });
     const classes = useStyles();
     const history = useHistory();
 
-    const [showPassword, setShowPassword] = useState(false);
-    const [userType, setUserType] = useState("ChooseOne");
-
-    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setUserType(event.target.value);
-    };
-
     const handleClickShowPassword = () => {
-        setShowPassword(!showPassword);
+        setState({ ...state, showPassword: !state.showPassword });
     };
-    
-    // const handleClickShowPassword = () => {
-    //     setState({ ...state, showPassword: !state.showPassword });
-    // };
 
     async function send(credentials: CredentialsModel) {
         try {
@@ -116,25 +105,14 @@ function Login(): JSX.Element {
                                 minLength: { value: 4, message: "Password too short, should be at least 4 characters." },
                                 pattern: { value: /^[a-zA-Z0-9]+$/gi, message: "Password is not valid, only letters and numbers are permitted." }
                             })}
-                            // type={state.showPassword ? 'text' : 'password'}
-                            // InputProps={{
-                            //     endAdornment:
-                            //         <InputAdornment position="end">
-                            //             <IconButton
-                            //                 aria-label="toggle password visibility"
-                            //                 onClick={handleClickShowPassword} edge="end">
-                            //                 {state.showPassword ? <Visibility /> : <VisibilityOff />}
-                            //             </IconButton>
-                            //         </InputAdornment>
-                            // }}
-                            type={showPassword ? 'text' : 'password'}
+                            type={state.showPassword ? 'text' : 'password'}
                             InputProps={{
                                 endAdornment:
                                     <InputAdornment position="end">
                                         <IconButton
                                             aria-label="toggle password visibility"
                                             onClick={handleClickShowPassword} edge="end">
-                                            {showPassword ? <Visibility /> : <VisibilityOff />}
+                                            {state.showPassword ? <Visibility /> : <VisibilityOff />}
                                         </IconButton>
                                     </InputAdornment>,
                             }}
