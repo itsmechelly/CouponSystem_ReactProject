@@ -1,0 +1,94 @@
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+.GetOneCompany *, * {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.GetOneCompany .Card {
+    max-width: 300px;
+    margin: auto;
+}
+
+.GetOneCompany > img {
+    float: left;
+    width:  280px;
+    height: 280px;
+    object-fit: cover;
+}
+
+.GetOneCompany .Card .Container {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.287);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+}
+
+.GetOneCompany .Container {
+    float: left;
+    width:  100%;
+    max-height: 600px;
+    margin-bottom: 20px;
+    object-fit: cover;
+}
+
+.GetOneCompany .Container .CardData {
+    height: 180px;
+}
+
+.GetOneCompany .CompanyId {
+    color: grey;
+    font-size: 18px;
+}
+
+.GetOneCompany .Container > button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 17px;
+}
+  
+.GetOneCompany .Container > button {
+    margin: 0;
+    top: 95%;
+    left: 50%;
+    margin-bottom: 3px;
+}
+
+.GetOneCompany .Card button:hover {
+    opacity: 0.7;
+}
+
+@media screen and (max-width: 650px) {
+    .GetOneCompany .Column {
+        width: 100%;
+        display: block;
+    }
+}
+
+@media screen and (min-width: 650px) {
+    .GetOneCompany .Column {
+        width: 100%;
+        display: block;
+    }
+}
+
+.GetOneCompany {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.GetOneCompany .MainHeader {
+    padding: 50px;
+    text-align: center;
+    background-color: #474e5d;
+    color: white;
+}
