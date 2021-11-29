@@ -129,7 +129,7 @@ function UpdateCompany(): JSX.Element {
                         // inputProps={{ pattern: "/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/", }}
                         {...register("email", {
                             required: { value: true, message: "Missing email." },
-                            pattern: { value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/, message: "Email is not valid." }
+                            // pattern: { value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/, message: "Email is not valid." }
                         })}
                         defaultValue={company?.email}
                         inputProps={{ onChange: handleChange }}
@@ -146,8 +146,8 @@ function UpdateCompany(): JSX.Element {
                         // inputProps={{ pattern: "/^[a-zA-Z0-9]+$/gi", minLength: 4, }}
                         {...register("password", {
                             required: { value: true, message: "Missing password." },
-                            minLength: { value: 4, message: "Password too short, should be at least 4 characters." },
-                            pattern: { value: /^[a-zA-Z0-9]+$/gi, message: "Password is not valid, only letters and numbers are permitted." }
+                            // minLength: { value: 4, message: "Password too short, should be at least 4 characters." },
+                            // pattern: { value: /^[a-zA-Z0-9]+$/gi, message: "Password is not valid, only letters and numbers are permitted." }
                         })}
                         error={!!errors.password}
                         helperText={errors.password?.message}
