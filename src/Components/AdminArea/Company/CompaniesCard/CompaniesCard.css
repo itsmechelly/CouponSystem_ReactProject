@@ -1,0 +1,82 @@
+.CompaniesCard *, * {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.CompaniesCard .Card {
+    max-width: 300px;
+    margin: auto;
+}
+
+.CompanyImg {
+    width:  100%;
+    float: left;
+    width:  280px;
+    height: 280px;
+    object-fit: cover;
+}
+
+.CompanyImg {
+    width: 100%;
+}
+
+.CompaniesCard .Card .Container {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.287);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+}
+
+.CompaniesCard .Container {
+    float: left;
+    width:  100%;
+    max-height: 600px;
+    margin-bottom: 20px;
+    object-fit: cover;
+}
+
+.CompaniesCard .Container .CardData {
+    height: 180px;
+}
+
+.CompaniesCard .CompanyId {
+    color: grey;
+    font-size: 18px;
+}
+
+.CompaniesCard .Container > button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 17px;
+}
+  
+.CompaniesCard .Container > button {
+    margin: 0;
+    top: 95%;
+    left: 50%;
+    margin-bottom: 3px;
+}
+
+.CompaniesCard .Card button:hover {
+    opacity: 0.7;
+}
+
+@media screen and (max-width: 650px) {
+    .CompaniesCard .Column {
+        width: 100%;
+        display: block;
+    }
+}
+
+@media screen and (min-width: 650px) {
+    .CompaniesCard .Column {
+        width: 100%;
+        display: block;
+    }
+}
