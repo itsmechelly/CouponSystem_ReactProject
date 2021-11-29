@@ -107,15 +107,15 @@ function Login(): JSX.Element {
                             })}
                             type={state.showPassword ? 'text' : 'password'}
                             inputProps={{
-                                pattern: "/^[a-zA-Z0-9]+$/gi", minLength: 4, 
-                                endAdornment:
-                                    <InputAdornment position="end">
-                                        <IconButton
-                                            aria-label="toggle password visibility"
-                                            onClick={handleClickShowPassword} edge="end">
-                                            {state.showPassword ? <Visibility /> : <VisibilityOff />}
-                                        </IconButton>
-                                    </InputAdornment>,
+                                pattern: "/^[a-zA-Z0-9]+$/gi", minLength: 4,
+                                // endAdornment:
+                                //     <InputAdornment position="end">
+                                //         <IconButton
+                                //             aria-label="toggle password visibility"
+                                //             onClick={handleClickShowPassword} edge="end">
+                                //             {state.showPassword ? <Visibility /> : <VisibilityOff />}
+                                //         </IconButton>
+                                //     </InputAdornment>,
                             }}
                             error={!!errors.password}
                             helperText={errors.password?.message}
@@ -124,6 +124,29 @@ function Login(): JSX.Element {
                         <br />
                         <br />
 
+                        <TextField
+                            name="clientType"
+                            fullWidth
+                            select
+                            required
+                            className="mui-input"
+                            label="Client type" variant="outlined"
+                            defaultValue={"clientType"}
+                            SelectProps={{ native: true }}
+                            {...register("clientType", {
+                                required: { value: true, message: "Missing client type." }
+                            })}
+                            error={!!errors.clientType}
+                            helperText={errors.clientType?.message}
+                        >
+                            <option value=""></option>
+                            <option value="ADMIN">Admin</option>
+                            <option value="COMPANY">Company</option>
+                            <option value="CUSTOMER">Customer</option>
+                        </TextField>
+
+                        <br />
+                        <br />
 
                     </form>
                 </div>
