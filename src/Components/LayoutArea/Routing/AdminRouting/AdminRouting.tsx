@@ -1,6 +1,5 @@
 import { Route, Switch } from "react-router-dom";
 import AdminHome from "../../../AdminArea/AdminHome/AdminHome";
-import AddCompany from "../../../AdminArea/Company/AddCompany/AddCompany";
 import DeleteCompany from "../../../AdminArea/Company/DeleteCompany/DeleteCompany";
 import GetAllCompanies from "../../../AdminArea/Company/GetAllCompanies/GetAllCompanies";
 import GetOneCompany from "../../../AdminArea/Company/GetOneCompany/GetOneCompany";
@@ -14,7 +13,7 @@ function AdminRouting(): JSX.Element {
 
             <Switch>
                 <Route path="/admin" component={AdminHome} exact />
-                <Route path="/admin/addCompany" component={AddCompany} exact />
+                {/* <Route path="/admin/addCompany" component={AddCompany} exact /> */}
                 {/* <Route path="/admin/updateCompany/:id" component={UpdateCompany} exact /> */}
                 <Route path="/admin/deleteCompany" component={DeleteCompany} exact />
                 <Route path="/admin/getOneCompany/:id" component={GetOneCompany} exact />

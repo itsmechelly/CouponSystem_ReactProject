@@ -1,12 +1,10 @@
 import { Route, Switch } from "react-router-dom";
-import AddCompanyCoupon from "../../../CompanyArea/AddCompanyCoupon/AddCompanyCoupon";
 import CompanyHome from "../../../CompanyArea/CompanyHome/CompanyHome";
 import DeleteCompanyCoupon from "../../../CompanyArea/DeleteCompanyCoupon/DeleteCompanyCoupon";
 import GetAllCompaniesCoupons from "../../../CompanyArea/GetAllCompaniesCoupons/GetAllCompaniesCoupons";
 import GetAllCouponsByCategory from "../../../CompanyArea/GetAllCouponsByCategory/GetAllCouponsByCategory";
 import GetAllCouponsByMaxPrice from "../../../CompanyArea/GetAllCouponsByMaxPrice/GetAllCouponsByMaxPrice";
 import GetCompanyDetails from "../../../CompanyArea/GetCompanyDetails/GetCompanyDetails";
-import UpdateCompanyCoupon from "../../../CompanyArea/UpdateCompanyCoupon/UpdateCompanyCoupon";
 
 function CompanyRouting(): JSX.Element {
     return (
