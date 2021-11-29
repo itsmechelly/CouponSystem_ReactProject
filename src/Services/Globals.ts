@@ -79,8 +79,8 @@ class ProductionGlobals extends Globals {
         register: "https://couponexpress.herokuapp.com/register",
         login: "https://couponexpress.herokuapp.com/login",
 
-        home: "https://couponexpress.herokuapp.com/home",
-        url: "https://couponexpress.herokuapp.com"
+        layout: "https://couponexpress.herokuapp.com/layout",
+        home: "https://couponexpress.herokuapp.com"
 
     };
 }
