@@ -31,8 +31,17 @@ interface LoginState {
 
 function Login(): JSX.Element {
 
+    let { register, handleSubmit, formState: { errors } } = useForm<CredentialsModel>({ mode: "all" });
+    const [state, setState] = useState<LoginState>({ showPassword: false });
+    const classes = useHistory();
+    const history = useHistory();
+
+    const handleClickShowPassword = () => {
+        setState({ ...state, showPassword: !state.showPassword });
+    };
+
     return (
-        <h1>hi</h1>
+        <h1>hiush</h1>
     );
 }
 
