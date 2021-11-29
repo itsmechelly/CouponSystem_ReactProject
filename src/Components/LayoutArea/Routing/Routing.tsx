@@ -15,18 +15,17 @@ function Routing(): JSX.Element {
             <Switch>
 
                 <Route path="/layout" component={Main} exact />
-                <Route path="/login" component={Login} exact />
 
                 {/* <Route path="/admin" component={AdminMain} />
                 <Route path="/company" component={CompanyMain} />
-                <Route path="/customer" component={CustomerMain} /> */}
+            <Route path="/customer" component={CustomerMain} /> */}
 
-                {/* <Route path="/register" component={Register} exact />
+                <Route path="/register" component={Register} exact />
                 <Route path="/login" component={Login} exact />
-                <Route path="/logout" component={Logout} exact /> */}
+                {/* <Route path="/logout" component={Logout} exact /> */}
 
                 <Redirect from="/" to="/layout" exact />
-                
+
                 {/* <Route component={Page404} /> */}
 
             </Switch>
