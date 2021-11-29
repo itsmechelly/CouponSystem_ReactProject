@@ -59,8 +59,23 @@ function Login(): JSX.Element {
     }
 
     return (
-        <h1>hiush (:</h1>
+        // <Grid container component="main" className={classes.root}>
+            <h1>hiush (: ani po </h1>
+        // </Grid>
     );
 }
 
 export default Login;
+
+function Copyright() {
+    return (
+        <Typography variant="body2" color="textSecondary" align="center">
+            {'Copyright © '}
+            <Link color="inherit" href="https://material-ui.com/">
+                Click Here To See My Personal Website
+            </Link>{' '}
+            {new Date().getFullYear()}
+            {'.'}
+        </Typography>
+    );
+}
