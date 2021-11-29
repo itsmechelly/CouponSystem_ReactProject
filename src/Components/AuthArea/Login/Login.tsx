@@ -84,7 +84,7 @@ function Login(): JSX.Element {
                             fullWidth
                             type="email"
                             autoComplete="email"
-                            inputProps={{ pattern: "/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/",}}
+                            inputProps={{ pattern: "/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/", }}
                             {...register("email", {
                                 required: { value: true, message: "Missing email." },
                                 pattern: { value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/, message: "Email is not valid." }
@@ -92,6 +92,36 @@ function Login(): JSX.Element {
                             error={!!errors.email}
                             helperText={errors.email?.message}
                         />
+
+                        <TextField
+                            label="Password"
+                            variant="outlined"
+                            margin="normal"
+                            fullWidth
+                            autoComplete="current-password"
+                            inputProps={{ pattern: "/^[a-zA-Z0-9]+$/gi", }}
+                            {...register("password", {
+                                required: { value: true, message: "Missing password." },
+                                minLength: { value: 4, message: "Password too short, should be at least 4 characters." },
+                                pattern: { value: /^[a-zA-Z0-9]+$/gi, message: "Password is not valid, only letters and numbers are permitted." }
+                            })}
+                            type={state.showPassword ? 'text' : 'password'}
+                            InputProps={{
+                                endAdornment:
+                                    <InputAdornment position="end">
+                                        <IconButton
+                                            aria-label="toggle password visibility"
+                                            onClick={handleClickShowPassword} edge="end">
+                                            {state.showPassword ? <Visibility /> : <VisibilityOff />}
+                                        </IconButton>
+                                    </InputAdornment>
+                            }}
+                            error={!!errors.password}
+                            helperText={errors.password?.message}
+                        />
+
+                        <br />
+                        <br />
 
                     </form>
                 </div>
