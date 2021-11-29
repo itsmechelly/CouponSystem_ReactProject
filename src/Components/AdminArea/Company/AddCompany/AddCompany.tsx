@@ -98,7 +98,6 @@ function AddCompany(): JSX.Element {
                         margin="normal"
                         fullWidth
                         autoComplete="current-password"
-                        // inputProps={{ pattern: "/^[a-zA-Z0-9]+$/gi", minLength: 4, }}
                         {...register("password", {
                             required: { value: true, message: "Missing password." },
                             minLength: { value: 4, message: "Password too short, should be at least 4 characters." },
