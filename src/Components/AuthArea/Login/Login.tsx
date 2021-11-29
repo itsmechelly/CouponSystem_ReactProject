@@ -106,16 +106,16 @@ function Login(): JSX.Element {
                                 pattern: { value: /^[a-zA-Z0-9]+$/gi, message: "Password is not valid, only letters and numbers are permitted." }
                             })}
                             type={state.showPassword ? 'text' : 'password'}
-                            // InputProps={{
-                            //     endAdornment:
-                            //         <InputAdornment position="end">
-                            //             <IconButton
-                            //                 aria-label="toggle password visibility"
-                            //                 onClick={handleClickShowPassword} edge="end">
-                            //                 {state.showPassword ? <Visibility /> : <VisibilityOff />}
-                            //             </IconButton>
-                            //         </InputAdornment>,
-                            // }}
+                            InputProps={{
+                                endAdornment:
+                                    <InputAdornment position="end">
+                                        <IconButton
+                                            aria-label="toggle password visibility"
+                                            onClick={handleClickShowPassword} edge="end">
+                                            {state.showPassword ? <Visibility /> : <VisibilityOff />}
+                                        </IconButton>
+                                    </InputAdornment>,
+                            }}
                             error={!!errors.password}
                             helperText={errors.password?.message}
                         />
@@ -168,7 +168,7 @@ function Login(): JSX.Element {
                                 </Link>
                             </Grid>
                             <Grid item>
-                                <Link href="#" variant="body2">
+                                <Link href="/register" variant="body2">
                                     {"Don't have an account? Sign Up"}
                                 </Link>
                             </Grid>
@@ -191,7 +191,7 @@ function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
             {'Copyright © '}
-            <Link color="inherit" href="https://material-ui.com/">
+            <Link color="inherit" href="https://my-portfolio-site-frontend.herokuapp.com" target="_blank">
                 Click Here To See My Personal Website
             </Link>{' '}
             {new Date().getFullYear()}
