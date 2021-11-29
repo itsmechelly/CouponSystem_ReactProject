@@ -62,6 +62,11 @@ function Login(): JSX.Element {
         <Grid container component="main" className={classes.root}>
             <CssBaseline />
             <h1>hiush (: ani po </h1>
+            <Grid item xs={false} sm={4} md={7} className={classes.image} />
+            <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+
+
+            </Grid>
         </Grid>
     );
 }
