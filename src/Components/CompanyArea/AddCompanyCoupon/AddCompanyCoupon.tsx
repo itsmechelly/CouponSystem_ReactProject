@@ -17,12 +17,12 @@ import { useHistory } from "react-router-dom";
 function AddCompanyCoupon(): JSX.Element {
 
     let { register, handleSubmit, formState: { errors }, getValues } = useForm<CouponModel>({ mode: "all" });
-    const history = useHistory();
+    // const history = useHistory();
 
     useEffect(() => {
         if (store.getState().AuthState.user?.clientType !== ClientType.COMPANY) {
             notify.error("Please log in");
-            history.push("/login");
+            // history.push("/login");
         }
     }, []);
 
@@ -43,7 +43,7 @@ function AddCompanyCoupon(): JSX.Element {
             const addedCoupon = response.data;
             store.dispatch(couponsAddedAction(addedCoupon));
             notify.success("Coupon has been added! coupon name: " + addedCoupon.title);
-            history.push("/company/getAllCompaniesCoupons");
+            // history.push("/company/getAllCompaniesCoupons");
         } catch (err) {
             notify.error(err);
             // if (err.response.data.status === 401) {
