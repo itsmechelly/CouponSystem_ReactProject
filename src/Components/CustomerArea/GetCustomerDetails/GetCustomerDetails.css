@@ -1,0 +1,24 @@
+.GetCustomerDetails .Container {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.GetCustomerDetails .Container .TextField {
+    background-image: url('../../../Assets/Images/GetDetails.jpg');
+    background-color: rgb(107, 124, 144);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 100%;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+}
+
+.CustomerFullName {
+    color: rgb(0, 0, 0);
+    font-size: 22px;
+}
+
+.DetailsInMin {
+    color: grey;
+    font-size: 13px;
+}

@@ -1,0 +1,19 @@
+.CustomerHome {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+.CustomerHome .MainHeader {
+    padding: 50px;
+    text-align: center;
+    background-color: #474e5d;
+    color: white;
+}
+
+.CustomerHome .BigTitle {
+    text-align: center;
+}

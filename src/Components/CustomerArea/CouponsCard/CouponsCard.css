@@ -1,0 +1,86 @@
+.CouponsCard *, * {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.CouponsCard .Card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+}
+
+.CompaniesCard .Card {
+    max-width: 300px;
+    margin: auto;
+}
+
+.CouponsCard .Card > button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+  
+.CouponsCard .Card button:hover {
+    opacity: 0.7;
+}
+
+.CouponCard .Price {
+    color: grey;
+    font-size: 18px;
+}
+
+.CouponCard .Category {
+    color: grey;
+    font-size: 22px;
+}
+
+.CouponCard .CouponImg {
+    width: 100%;
+}
+
+@media screen and (max-width: 650px) {
+    .CouponCard .Column {
+        width: 100%;
+        display: block;
+    }
+}
+
+@media screen and (min-width: 650px) {
+    .CouponCard .Column {
+        width: 100%;
+        display: block;
+    }
+}
+
+.Container .DataCard {
+    float: left;
+    width:  100%;
+    max-height: 500px;
+    margin-bottom: 20px;
+    object-fit: cover;
+}
+
+.Container .DataCard {
+    height: 370px;
+}
+
+img {
+    float: left;
+    width:  280px;
+    height: 280px;
+    object-fit: cover;
+}
+
+.Container > button {
+    margin: 0;
+    top: 90%;
+    left: 50%;
+    margin-bottom: 3px;
+}
