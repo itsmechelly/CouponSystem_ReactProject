@@ -1,0 +1,19 @@
+.GetAllCompaniesCoupons {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+.GetAllCompaniesCoupons .MainHeader {
+    padding: 50px;
+    text-align: center;
+    background-color: #474e5d;
+    color: white;
+}
+
+.GetAllCompaniesCoupons .BigTitle {
+    text-align:center
+}

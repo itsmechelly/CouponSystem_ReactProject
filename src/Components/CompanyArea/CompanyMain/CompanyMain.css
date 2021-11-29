@@ -1,0 +1,19 @@
+.w3-teal {
+    background-color: rgb(16, 49, 90) !important ;
+}
+
+.first {
+    display:none;
+ }
+
+ p.start {
+    font-size: 20px;
+    text-align: justify;
+    display: inline;
+}
+
+h1.start {
+    font-size: 30px;
+    margin: 0;
+    display: inline-block;
+}
