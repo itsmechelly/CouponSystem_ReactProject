@@ -1,0 +1,19 @@
+.GetAllCompanies {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+.GetAllCompanies .MainHeader {
+    padding: 50px;
+    text-align: center;
+    background-color: #474e5d;
+    color: white;
+}
+
+.GetAllCompanies .BigTitle {
+    text-align: center;
+}

@@ -1,0 +1,46 @@
+.DeleteCompany  input[type=text], input[type=email], input[type=password],input[type=date], input[type=list], input[type=file], option, select, textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+  
+.DeleteCompany input[type=file] {
+    background-color: #fafafa;
+    border: 1px solid #ccc;
+}
+
+.DeleteCompany .Group {
+    margin-top: 22px;
+}
+
+.DeleteCompany .A, .DeleteCompany .B  {
+    background-color: #205c6b8a;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.DeleteCompany .A {
+    margin-right: 12px;
+}
+
+.DeleteCompany .B {
+    margin-left: 12px;
+}
+
+.DeleteCompany button:hover, .DeleteCompany .Reset:hover {
+    background-color: #346d7c;
+}
+  
+.DeleteCompany {
+    border-radius: 5px;
+    background-color: #9ddeee6f;
+    padding: 20px;
+    margin: 55px;
+}
