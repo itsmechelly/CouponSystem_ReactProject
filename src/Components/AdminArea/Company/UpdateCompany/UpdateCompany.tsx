@@ -145,7 +145,7 @@ function UpdateCompany(): JSX.Element {
                         margin="normal"
                         fullWidth
                         autoComplete="current-password"
-                        inputProps={{ pattern: "/^[a-zA-Z0-9]+$/gi", minLength: 4, }}
+                        // inputProps={{ pattern: "/^[a-zA-Z0-9]+$/gi", minLength: 4, }}
                         {...register("password", {
                             required: { value: true, message: "Missing password." },
                             minLength: { value: 4, message: "Password too short, should be at least 4 characters." },
@@ -155,17 +155,18 @@ function UpdateCompany(): JSX.Element {
                         helperText={errors.password?.message}
                         type={state.showPassword ? 'text' : 'password'}
                         defaultValue={company?.password}
-                        // InputProps={{
-                        //     endAdornment:
-                        //         <InputAdornment position="end">
-                        //             <IconButton
-                        //                 aria-label="toggle password visibility"
-                        //                 onClick={handleClickShowPassword} edge="end">
-                        //                 {state.showPassword ? <Visibility /> : <VisibilityOff />}
-                        //             </IconButton>
-                        //         </InputAdornment>,
-                        //     onChange: handleChange
-                        // }}
+                        inputProps={{
+                            pattern: "/^[a-zA-Z0-9]+$/gi", minLength: 4, 
+                            endAdornment:
+                                <InputAdornment position="end">
+                                    <IconButton
+                                        aria-label="toggle password visibility"
+                                        onClick={handleClickShowPassword} edge="end">
+                                        {state.showPassword ? <Visibility /> : <VisibilityOff />}
+                                    </IconButton>
+                                </InputAdornment>,
+                            onChange: handleChange
+                        }}
                     />
 
                     <ButtonGroup className="Group" variant="text" fullWidth>
