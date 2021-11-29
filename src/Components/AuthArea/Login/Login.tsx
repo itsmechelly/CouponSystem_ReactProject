@@ -114,7 +114,7 @@ function Login(): JSX.Element {
                                             onClick={handleClickShowPassword} edge="end">
                                             {state.showPassword ? <Visibility /> : <VisibilityOff />}
                                         </IconButton>
-                                    </InputAdornment>,
+                                    </InputAdornment>
                             }}
                             error={!!errors.password}
                             helperText={errors.password?.message}
