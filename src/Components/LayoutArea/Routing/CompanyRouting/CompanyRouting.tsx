@@ -13,8 +13,10 @@ function CompanyRouting(): JSX.Element {
         <div className="CompanyRouting">
             <Switch>
                 <Route path="/company" component={CompanyHome} exact />
-                <Route path="/company/addCompanyCoupon" component={AddCompanyCoupon} exact />
-                <Route path="/company/updateCompanyCoupon/:id" component={UpdateCompanyCoupon} exact />
+                {/* po */}
+                {/* <Route path="/company/addCompanyCoupon" component={AddCompanyCoupon} exact /> */}
+                {/* po */}
+                {/* <Route path="/company/updateCompanyCoupon/:id" component={UpdateCompanyCoupon} exact /> */}
                 <Route path="/company/deleteCompanyCoupon/" component={DeleteCompanyCoupon} exact />
                 <Route path="/company/getAllCompaniesCoupons" component={GetAllCompaniesCoupons} exact />
                 <Route path="/company/getAllCouponsByCategory" component={GetAllCouponsByCategory} exact />
