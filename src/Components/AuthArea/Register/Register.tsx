@@ -1,29 +1,43 @@
-import { Grid, CssBaseline, Paper, Avatar, Typography, TextField, Select, MenuItem, FormControlLabel, Checkbox, Button, Box, makeStyles } from "@material-ui/core";
+import { Grid, CssBaseline, Paper, Avatar, Typography, TextField, Select, MenuItem, FormControlLabel, Checkbox, Button, Box, makeStyles, ButtonGroup } from "@material-ui/core";
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import registerImage from "../../../Assets/Images/Login.jpg";
 import axios from "axios";
 import { useForm } from "react-hook-form";
-import { useHistory } from "react-router";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import Link from '@material-ui/core/Link';
 import UserModel from "../../../Models/UserModel";
 import { registerAction } from "../../../Redux/AuthState";
 import store from "../../../Redux/Store";
 import globals from "../../../Services/Globals";
 import notify from "../../../Services/Notification";
 import "./Register.css";
+import CustomerModel from "../../../Models/CustomerModel";
+import jwtAxios from "../../../Services/jwtAxios";
+import { customerAddedAction } from "../../../Redux/CustomersState";
+import { useState } from "react";
+
+interface AddCustomerState {
+    showPassword: boolean;
+}
 
 function Register(): JSX.Element {
 
+    let { register, handleSubmit, formState: { errors } } = useForm<CustomerModel>({ mode: "all" });
+    let history = useHistory();
+    const [state, setState] = useState<AddCustomerState>({ showPassword: false });
     const classes = useStyles();
-    const history = useHistory(); //Redirect function
-    const { register, handleSubmit } = useForm<UserModel>();
 
-    async function send(user: UserModel) {
+    const handleClickShowPassword = () => {
+        setState({ ...state, showPassword: !state.showPassword });
+    };
+
+    async function send(customer: CustomerModel) {
         try {
-            const response = await axios.post<UserModel>(globals.urls.register, user);
-            store.dispatch(registerAction(response.data));
+            const response = await jwtAxios.post<CustomerModel>(globals.urls.register, customer);
+            const addedCustomer = response.data;
+            store.dispatch(customerAddedAction(addedCustomer));
             notify.success("You are been successfully registered!");
-            history.push("/layout"); //Redirect to home on success
+            history.push("/customer");
         }
         catch (err) {
             notify.error(err);
@@ -47,79 +61,77 @@ function Register(): JSX.Element {
                         Register
                     </Typography>
 
-                    <form onSubmit={handleSubmit(send)} className={classes.form} noValidate>
+                    <form onSubmit={handleSubmit(send)}>
 
                         <TextField
-                            label="First Name"
-                            name="firstName"
+                            label="Customer First Name"
                             variant="outlined"
+                            autoFocus
                             margin="normal"
                             fullWidth
-                            // autoFocus
-                            required
-                            {...register("clientName")}
-                        />
-
-                        <TextField
-                            label="Last Name"
-                            // name="lastName"
-                            variant="outlined"
-                            margin="normal"
-                            fullWidth
-                            required
-                        // {...register("lastName")}
-                        />
-
-                        <TextField
-                            label="Email Address"
-                            autoComplete="email"
-                            name="email"
-                            // id="email"
-                            variant="outlined"
-                            margin="normal"
-                            fullWidth
-                            // autoFocus
-                            required
-                            {...register("email")}
-                        />
-
-                        <TextField
-                            label="Password"
-                            // type="password"
-                            autoComplete="current-password"
-                            name="password"
-                            // id="password"
-                            variant="outlined"
-                            margin="normal"
-                            fullWidth
-                            required
-                            {...register("password")}
-                        />
-
-                        <br />
-                        <br />
-
-                        <TextField
-                            name="clientType"
-                            fullWidth
-                            select
-                            required
-                            className="mui-input"
-                            label="Client type" variant="outlined"
-                            defaultValue={"clientType"}
-                            SelectProps={{ native: true }}
-                            {...register("clientType", {
-                                required: { value: true, message: "Missing client type." }
+                            {...register("firstName", {
+                                required: { value: true, message: "Missing first name." },
+                                minLength: { value: 2, message: "First name is too short, should be at least 2 characters." },
+                                pattern: { value: /^[a-zA-Z0-9]+$/gi, message: "First name is not valid, only letters and numbers are permitted." }
                             })}
-                        //need to handle errors!
-                        // error={!!errors.clientType}
-                        // helperText={errors.clientType?.message}
-                        >
-                            <option value=""></option>
-                            <option value="ADMIN">Admin</option>
-                            <option value="COMPANY">Company</option>
-                            <option value="CUSTOMER">Customer</option>
-                        </TextField>
+                            error={!!errors.firstName}
+                            helperText={errors.firstName?.message}
+                        />
+
+                        <TextField
+                            label="Customer Last Name"
+                            variant="outlined"
+                            margin="normal"
+                            fullWidth
+                            {...register("lastName", {
+                                required: { value: true, message: "Missing last name." },
+                                minLength: { value: 2, message: "Last name is too short, should be at least 2 characters." },
+                                pattern: { value: /^[a-zA-Z0-9]+$/gi, message: "Last name is not valid, only letters and numbers are permitted." }
+                            })}
+                            error={!!errors.lastName}
+                            helperText={errors.lastName?.message}
+                        />
+
+                        <TextField
+                            label="Customer Email"
+                            variant="outlined"
+                            margin="normal"
+                            fullWidth
+                            type="email"
+                            autoComplete="email"
+                            {...register("email", {
+                                required: { value: true, message: "Missing email." },
+                                pattern: { value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/, message: "Email is not valid." }
+                            })}
+                            error={!!errors.email}
+                            helperText={errors.email?.message}
+                        />
+
+                        <TextField
+                            label="Customer Password"
+                            variant="outlined"
+                            margin="normal"
+                            fullWidth
+                            autoComplete="current-password"
+                            {...register("password", {
+                                required: { value: true, message: "Missing password." },
+                                minLength: { value: 4, message: "Password too short, should be at least 4 characters." },
+                                pattern: { value: /^[a-zA-Z0-9]+$/gi, message: "Password is not valid, only letters and numbers are permitted." }
+                            })}
+                            type={state.showPassword ? 'text' : 'password'}
+                            // InputProps={{
+                            //     endAdornment:
+                            //         <InputAdornment position="end">
+                            //             <IconButton
+                            //                 aria-label="toggle password visibility"
+                            //                 onClick={handleClickShowPassword} edge="end">
+                            //                 {state.showPassword ? <Visibility /> : <VisibilityOff />}
+                            //             </IconButton>
+                            //         </InputAdornment>
+                            // }}
+                            error={!!errors.password}
+                            helperText={errors.password?.message}
+                        />
 
                         <FormControlLabel
                             control={<Checkbox value="remember" color="primary" />}
@@ -132,7 +144,7 @@ function Register(): JSX.Element {
                             variant="contained"
                             color="primary"
                             className={classes.submit}>
-                            Click To Register
+                            Register
                         </Button>
 
                         <Box mt={5}>
@@ -152,7 +164,7 @@ function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
             {'Copyright © '}
-            <Link color="inherit" to="https://material-ui.com/">
+            <Link color="inherit" href="https://my-portfolio-site-frontend.herokuapp.com" target="_blank">
                 Click Here To See My Personal Website
             </Link>{' '}
             {new Date().getFullYear()}
