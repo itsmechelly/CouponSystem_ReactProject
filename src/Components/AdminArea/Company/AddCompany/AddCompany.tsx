@@ -93,20 +93,22 @@ function AddCompany(): JSX.Element {
 
                     <Button
                         type="submit"
-                        fullWidth
-                        variant="contained"
                         color="primary"
+                        variant="contained"
+
+                        
                         className={classes.submit}>
-                        Sign In
+                        Confirm
                     </Button>
                     
                     <Button
-                        type="submit"
-                        fullWidth
+                        type="reset"
+                        color="secondary"
                         variant="contained"
-                        color="primary"
+
+                        
                         className={classes.submit}>
-                        Sign Out
+                        Reset
                     </Button>
 
                 </ButtonGroup>
@@ -139,5 +141,6 @@ const useStyles = makeStyles((theme) => ({
     },
     submit: {
         margin: theme.spacing(3, 0, 2),
+        backgroundColor: theme.palette.primary.main,
     },
 }));
