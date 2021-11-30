@@ -3,13 +3,17 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { ButtonGroup } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
-
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useHistory } from "react-router-dom";
+import store from '../../../../Redux/Store';
+import globals from '../../../../Services/Globals';
+import jwtAxios from '../../../../Services/jwtAxios';
+import notify from '../../../../Services/Notification';
 import CompanyModel from "../../../../Models/CompanyModel";
+import { companyAddedAction } from '../../../../Redux/CompaniesState';
 import "./AddCompany.css";
 
-import { useHistory } from "react-router-dom";
 
 interface AddCompanyState {
     showPassword: boolean;
@@ -26,6 +30,21 @@ function AddCompany(): JSX.Element {
     const handleClickShowPassword = () => {
         setState({ ...state, showPassword: !state.showPassword });
     };
+
+    async function send(company: CompanyModel) {
+        try {
+            const response = await jwtAxios.post<CompanyModel>(globals.urls.addCompany, company);
+            const addedCompany = response.data;
+            store.dispatch(companyAddedAction(addedCompany));
+            notify.success("Company has been added! company name: " + addedCompany.name);
+            history.push("/admin/getAllCompanies");
+        } catch (err) {
+            notify.error(err);
+            // if (err.response.data.status === 401) { // UNAUTHORIZED or Token Expired
+            //     history.push("/logout");
+            // }
+        }
+    }
 
     return (
         <div className="AddCompany">
