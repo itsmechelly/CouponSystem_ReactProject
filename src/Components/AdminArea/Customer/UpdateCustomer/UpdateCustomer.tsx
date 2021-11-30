@@ -1,5 +1,5 @@
 import { Button, ButtonGroup, IconButton, InputAdornment, TextField } from "@material-ui/core";
-import { Add, ClearAll, Edit, Send, Visibility, VisibilityOff } from "@material-ui/icons";
+import { Visibility, VisibilityOff } from "@material-ui/icons";
 import Typography from '@material-ui/core/Typography';
 import EditIcon from '@material-ui/icons/Edit';
 import ClearAllIcon from '@material-ui/icons/ClearAll';
@@ -202,7 +202,7 @@ function UpdateCustomer(): JSX.Element {
                         {/* <ButtonGroup className="Group" variant="text" fullWidth> */}
 
                         <Button
-                            // startIcon={<Send />}
+                            // startIcon={<SendIcon />}
                             type="submit"
                             color="primary"
                             variant="contained"
@@ -211,7 +211,7 @@ function UpdateCustomer(): JSX.Element {
                         </Button>
 
                         <Button
-                            // startIcon={<ClearAll />}
+                            // startIcon={<ClearAllIcon />}
                             type="reset"
                             color="primary"
                             variant="contained"

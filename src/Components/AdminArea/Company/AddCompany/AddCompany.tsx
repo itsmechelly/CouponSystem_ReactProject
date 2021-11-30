@@ -128,7 +128,7 @@ function AddCompany(): JSX.Element {
                         type="submit"
                         color="primary"
                         variant="contained"
-                        startIcon={<SendIcon />}
+                        // startIcon={<SendIcon />}
                         className={classes.submit}>
                         Confirm
                     </Button>
@@ -137,7 +137,7 @@ function AddCompany(): JSX.Element {
                         type="reset"
                         color="primary"
                         variant="contained"
-                        startIcon={<ClearAllIcon />}
+                        // startIcon={<ClearAllIcon />}
                         className={classes.submit}>
                         Reset
                     </Button>

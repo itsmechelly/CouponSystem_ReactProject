@@ -1,5 +1,5 @@
 import { Button, ButtonGroup, IconButton, InputAdornment, TextField } from "@material-ui/core";
-import { Add, ClearAll, Send, Visibility, VisibilityOff } from "@material-ui/icons";
+import { Visibility, VisibilityOff } from "@material-ui/icons";
 import Typography from '@material-ui/core/Typography';
 import AddIcon from '@material-ui/icons/Add';
 import ClearAllIcon from '@material-ui/icons/ClearAll';
@@ -140,7 +140,7 @@ function AddCustomer(): JSX.Element {
                         {/* <ButtonGroup variant="text"> */}
 
                         <Button
-                            startIcon={<SendIcon />}
+                            // startIcon={<SendIcon />}
                             type="submit"
                             color="primary"
                             variant="contained"
@@ -149,7 +149,7 @@ function AddCustomer(): JSX.Element {
                         </Button>
 
                         <Button
-                            startIcon={<ClearAllIcon />}
+                            // startIcon={<ClearAllIcon />}
                             type="reset"
                             color="primary"
                             variant="contained"

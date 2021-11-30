@@ -332,7 +332,7 @@ function UpdateCompanyCoupon(): JSX.Element {
                         {/* <ButtonGroup className="Group" variant="text" fullWidth> */}
 
                         <Button
-                            startIcon={<SendIcon />}
+                            // startIcon={<SendIcon />}
                             type="submit"
                             color="primary"
                             variant="contained"
@@ -341,7 +341,7 @@ function UpdateCompanyCoupon(): JSX.Element {
                         </Button>
 
                         <Button
-                            startIcon={<ClearAllIcon />}
+                            // startIcon={<ClearAllIcon />}
                             type="reset"
                             color="primary"
                             variant="contained"
