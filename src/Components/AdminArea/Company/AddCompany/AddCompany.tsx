@@ -7,6 +7,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import CompanyModel from "../../../../Models/CompanyModel";
 import "./AddCompany.css";
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import { ClearAll, Send } from '@material-ui/icons';
 
 interface AddCompanyState {
     showPassword: boolean;
@@ -95,7 +97,7 @@ function AddCompany(): JSX.Element {
                         type="submit"
                         color="primary"
                         variant="contained"
-
+                        startIcon={<Send />}
                         className={classes.submit}>
                         Confirm
                     </Button>
@@ -104,8 +106,7 @@ function AddCompany(): JSX.Element {
                         type="reset"
                         color="secondary"
                         variant="contained"
-
-
+                        startIcon={<ClearAll />}
                         className={classes.submit}>
                         Reset
                     </Button>
