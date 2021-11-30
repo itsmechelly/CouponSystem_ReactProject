@@ -1,9 +1,9 @@
 import { Button, ButtonGroup, IconButton, InputAdornment, TextField } from "@material-ui/core";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
 import Typography from '@material-ui/core/Typography';
-import AddIcon from '@material-ui/icons/Add';
-import ClearAllIcon from '@material-ui/icons/ClearAll';
-import SendIcon from '@material-ui/icons/Send';
+// import AddIcon from '@material-ui/icons/Add';
+// import ClearAllIcon from '@material-ui/icons/ClearAll';
+// import SendIcon from '@material-ui/icons/Send';
 import { makeStyles } from '@material-ui/core/styles';
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -59,7 +59,7 @@ function AddCustomer(): JSX.Element {
         <div className="AddCustomer">
             <div className="Container">
 
-                <AddIcon />
+                {/* <AddIcon /> */}
                 <Typography variant="h3" className="Headline">
                     Add Customer
                 </Typography>
