@@ -1,8 +1,5 @@
 import { Button, ButtonGroup, FormControl, FormHelperText, TextField } from "@material-ui/core";
 import Typography from '@material-ui/core/Typography';
-// import AddIcon from '@material-ui/icons/Add';
-// import ClearAllIcon from '@material-ui/icons/ClearAll';
-// import SendIcon from '@material-ui/icons/Send';
 import { makeStyles } from '@material-ui/core/styles';
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
@@ -60,7 +57,6 @@ function AddCompanyCoupon(): JSX.Element {
         <div className="AddCompanyCoupon">
             <div className="Container">
 
-                {/* <AddIcon /> */}
                 <Typography variant="h3" className="Headline">
                     Add Company Coupon
                 </Typography>
@@ -228,7 +224,6 @@ function AddCompanyCoupon(): JSX.Element {
                         {/* <ButtonGroup className="Group" variant="text" fullWidth> */}
 
                         <Button
-                            // startIcon={<SendIcon />}
                             type="submit"
                             color="primary"
                             variant="contained"
@@ -237,7 +232,6 @@ function AddCompanyCoupon(): JSX.Element {
                         </Button>
 
                         <Button
-                            // startIcon={<ClearAllIcon />}
                             type="reset"
                             color="secondary"
                             variant="contained"

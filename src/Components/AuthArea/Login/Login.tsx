@@ -1,4 +1,4 @@
-import { IconButton, InputAdornment, MenuItem, Select } from "@material-ui/core";
+import { InputAdornment, MenuItem, Select } from "@material-ui/core";
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import CredentialsModel from "../../../Models/CredentialsModel";
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';

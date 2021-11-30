@@ -2,9 +2,6 @@ import { Button, ButtonGroup, IconButton, InputAdornment, MenuItem, Select, Text
 import { Visibility, VisibilityOff } from "@material-ui/icons";
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-// import EditIcon from '@material-ui/icons/Edit';
-// import ClearAllIcon from '@material-ui/icons/ClearAll';
-// import SendIcon from '@material-ui/icons/Send';
 import { ChangeEvent, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory, useParams } from "react-router-dom";
@@ -104,7 +101,6 @@ function UpdateCompany(): JSX.Element {
         <div className="UpdateCompany">
             <div className="Container">
 
-                {/* <EditIcon /> */}
                 <Typography variant="h3" className="Headline">
                     Update Company
                 </Typography>
@@ -172,7 +168,6 @@ function UpdateCompany(): JSX.Element {
                         {/* <ButtonGroup variant="text"> */}
 
                         <Button
-                            // startIcon={<SendIcon />}
                             type="submit"
                             color="primary"
                             variant="contained"
@@ -181,7 +176,6 @@ function UpdateCompany(): JSX.Element {
                         </Button>
 
                         <Button
-                            // startIcon={<ClearAllIcon />}
                             type="reset"
                             color="primary"
                             variant="contained"

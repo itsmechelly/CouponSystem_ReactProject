@@ -3,8 +3,6 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { ButtonGroup } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
-// import ClearAllIcon from '@material-ui/icons/ClearAll';
-// import SendIcon from '@material-ui/icons/Send';
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
@@ -128,7 +126,6 @@ function AddCompany(): JSX.Element {
                         type="submit"
                         color="primary"
                         variant="contained"
-                        // startIcon={<SendIcon />}
                         className={classes.submit}>
                         Confirm
                     </Button>
@@ -137,7 +134,6 @@ function AddCompany(): JSX.Element {
                         type="reset"
                         color="primary"
                         variant="contained"
-                        // startIcon={<ClearAllIcon />}
                         className={classes.submit}>
                         Reset
                     </Button>
