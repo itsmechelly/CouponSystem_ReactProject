@@ -1,4 +1,4 @@
-import { Button, ButtonGroup, TextField, Typography } from "@material-ui/core";
+import { Button, TextField, Typography } from "@material-ui/core";
 import { ClearAll, Send } from "@material-ui/icons";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -84,7 +84,7 @@ function AddCompany(): JSX.Element {
                     helperText={errors.password?.message}
                 />
 
-                <ButtonGroup className="Group" variant="text" fullWidth>
+                {/* <ButtonGroup className="Group" variant="text" fullWidth> */}
 
                     <Button
                         className="A"
@@ -104,7 +104,7 @@ function AddCompany(): JSX.Element {
                         Reset
                     </Button>
 
-                </ButtonGroup>
+                {/* </ButtonGroup> */}
 
             </form>
         </div >
