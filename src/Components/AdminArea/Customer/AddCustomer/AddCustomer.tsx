@@ -1,5 +1,7 @@
-import { Button, ButtonGroup, IconButton, InputAdornment, TextField, Typography } from "@material-ui/core";
+import { Button, ButtonGroup, IconButton, InputAdornment, TextField } from "@material-ui/core";
 import { Add, ClearAll, Send, Visibility, VisibilityOff } from "@material-ui/icons";
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
@@ -12,7 +14,6 @@ import jwtAxios from "../../../../Services/jwtAxios";
 import notify from "../../../../Services/Notification";
 import "./AddCustomer.css";
 
-
 interface AddCustomerState {
     showPassword: boolean;
 }
@@ -22,13 +23,14 @@ function AddCustomer(): JSX.Element {
     let { register, handleSubmit, formState: { errors } } = useForm<CustomerModel>({ mode: "all" });
     let history = useHistory();
     const [state, setState] = useState<AddCustomerState>({ showPassword: false });
+    const classes = useStyles();
 
-    useEffect(() => {
-        if (store.getState().AuthState.user?.clientType !== ClientType.ADMIN) {
-            notify.error("Please log in");
-            history.push("/login");
-        }
-    }, []);
+    // useEffect(() => {
+    //     if (store.getState().AuthState.user?.clientType !== ClientType.ADMIN) {
+    //         notify.error("Please log in");
+    //         history.push("/login");
+    //     }
+    // }, []);
 
     const handleClickShowPassword = () => {
         setState({ ...state, showPassword: !state.showPassword });
@@ -54,7 +56,7 @@ function AddCustomer(): JSX.Element {
         <div className="AddCustomer">
             <div className="Container">
 
-                <Add />
+                {/* <Add /> */}
                 <Typography variant="h3" className="Headline">
                     Add Customer
                 </Typography>
@@ -64,9 +66,9 @@ function AddCustomer(): JSX.Element {
                     <TextField
                         label="Customer First Name"
                         variant="outlined"
+                        autoFocus
                         margin="normal"
                         fullWidth
-                        autoFocus
                         {...register("firstName", {
                             required: { value: true, message: "Missing first name." },
                             minLength: { value: 2, message: "First name is too short, should be at least 2 characters." },
@@ -117,37 +119,38 @@ function AddCustomer(): JSX.Element {
                             pattern: { value: /^[a-zA-Z0-9]+$/gi, message: "Password is not valid, only letters and numbers are permitted." }
                         })}
                         type={state.showPassword ? 'text' : 'password'}
-                        InputProps={{
-                            endAdornment:
-                                <InputAdornment position="end">
-                                    <IconButton
-                                        aria-label="toggle password visibility"
-                                        onClick={handleClickShowPassword} edge="end">
-                                        {state.showPassword ? <Visibility /> : <VisibilityOff />}
-                                    </IconButton>
-                                </InputAdornment>
-                        }}
+                        // InputProps={{
+                        //     endAdornment:
+                        //         <InputAdornment position="end">
+                        //             <IconButton
+                        //                 aria-label="toggle password visibility"
+                        //                 onClick={handleClickShowPassword} edge="end">
+                        //                 {state.showPassword ? <Visibility /> : <VisibilityOff />}
+                        //             </IconButton>
+                        //         </InputAdornment>
+                        // }}
                         error={!!errors.password}
                         helperText={errors.password?.message}
                     />
 
-                    <ButtonGroup className="Group" variant="text" fullWidth>
+                    <ButtonGroup>
+                        {/* <ButtonGroup variant="text"> */}
 
                         <Button
-                            className="A"
-                            startIcon={<Send />}
+                            // startIcon={<Send />}
                             type="submit"
                             color="primary"
-                            variant="contained">
+                            variant="contained"
+                            className={classes.submit}>
                             Confirm
                         </Button>
 
                         <Button
-                            className="B"
-                            startIcon={<ClearAll />}
+                            // startIcon={<ClearAll />}
                             type="reset"
-                            color="secondary"
-                            variant="contained">
+                            color="primary"
+                            variant="contained"
+                            className={classes.submit}>
                             Reset
                         </Button>
 
@@ -161,3 +164,30 @@ function AddCustomer(): JSX.Element {
 }
 
 export default AddCustomer;
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        height: '100vh',
+    },
+    paper: {
+        margin: theme.spacing(8, 4),
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        height: '(100vh - 40px)',
+    },
+    avatar: {
+        margin: theme.spacing(1),
+        backgroundColor: theme.palette.primary.main,
+    },
+    form: {
+        width: '90%', // Fix IE 11 issue.
+        marginTop: theme.spacing(1),
+    },
+    submit: {
+        margin: theme.spacing(3, 0, 2),
+        marginRight: theme.spacing(2),
+        backgroundColor: theme.palette.primary.main,
+        borderRadius: '0px',
+    },
+}));
