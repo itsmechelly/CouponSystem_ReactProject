@@ -1,5 +1,7 @@
-import { Button, ButtonGroup, FormControl, FormHelperText, TextField, Typography } from "@material-ui/core";
+import { Button, ButtonGroup, FormControl, FormHelperText, TextField } from "@material-ui/core";
 import { Add, ClearAll, Send } from "@material-ui/icons";
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
@@ -17,13 +19,14 @@ function AddCompanyCoupon(): JSX.Element {
 
     let { register, handleSubmit, formState: { errors }, getValues } = useForm<CouponModel>({ mode: "all" });
     const history = useHistory();
+    const classes = useStyles();
 
-    useEffect(() => {
-        if (store.getState().AuthState.user?.clientType !== ClientType.COMPANY) {
-            notify.error("Please log in");
-            history.push("/login");
-        }
-    }, []);
+    // useEffect(() => {
+    //     if (store.getState().AuthState.user?.clientType !== ClientType.COMPANY) {
+    //         notify.error("Please log in");
+    //         history.push("/login");
+    //     }
+    // }, []);
 
     async function send(coupon: CouponModel) {
 
@@ -55,7 +58,7 @@ function AddCompanyCoupon(): JSX.Element {
         <div className="AddCompanyCoupon">
             <div className="Container">
 
-                <Add />
+                {/* <Add /> */}
                 <Typography variant="h3" className="Headline">
                     Add Company Coupon
                 </Typography>
@@ -219,23 +222,24 @@ function AddCompanyCoupon(): JSX.Element {
                     <br />
                     <br />
 
-                    <ButtonGroup className="Group" variant="text" fullWidth>
+                    <ButtonGroup>
+                        {/* <ButtonGroup className="Group" variant="text" fullWidth> */}
 
                         <Button
-                            className="A"
-                            startIcon={<Send />}
+                            // startIcon={<Send />}
                             type="submit"
                             color="primary"
-                            variant="contained">
+                            variant="contained"
+                            className={classes.submit}>
                             Confirm
                         </Button>
 
                         <Button
-                            className="B"
-                            startIcon={<ClearAll />}
+                            // startIcon={<ClearAll />}
                             type="reset"
                             color="secondary"
-                            variant="contained">
+                            variant="contained"
+                            className={classes.submit}>
                             Reset
                         </Button>
 
@@ -249,3 +253,30 @@ function AddCompanyCoupon(): JSX.Element {
 }
 
 export default AddCompanyCoupon;
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        height: '100vh',
+    },
+    paper: {
+        margin: theme.spacing(8, 4),
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        height: '(100vh - 40px)',
+    },
+    avatar: {
+        margin: theme.spacing(1),
+        backgroundColor: theme.palette.primary.main,
+    },
+    form: {
+        width: '90%', // Fix IE 11 issue.
+        marginTop: theme.spacing(1),
+    },
+    submit: {
+        margin: theme.spacing(3, 0, 2),
+        marginRight: theme.spacing(2),
+        backgroundColor: theme.palette.primary.main,
+        borderRadius: '0px',
+    },
+}));

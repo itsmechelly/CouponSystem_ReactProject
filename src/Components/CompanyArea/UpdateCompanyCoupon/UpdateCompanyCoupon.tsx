@@ -1,9 +1,10 @@
-import { createStyles, Button, ButtonGroup, FormControl, FormHelperText, makeStyles, TextField, Theme, Typography, InputAdornment } from "@material-ui/core";
+import { createStyles, Button, ButtonGroup, FormControl, FormHelperText, TextField, Theme, InputAdornment } from "@material-ui/core";
 import { ClearAll, Edit, Send } from "@material-ui/icons";
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
 import { ChangeEvent, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { CategoryType } from "../../../Models/CategoryType";
 import CouponModel from "../../../Models/CouponModel";
 import { ClientType } from "../../../Models/UserModel";
@@ -13,22 +14,6 @@ import globals from "../../../Services/Globals";
 import jwtAxios from "../../../Services/jwtAxios";
 import notify from "../../../Services/Notification";
 import "./UpdateCompanyCoupon.css";
-
-
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        container: {
-            display: 'flex',
-            flexWrap: 'wrap',
-        },
-        textField: {
-            maxWidth: 250
-        },
-        input: {
-            backgroundColor: '#ffffff',
-        }
-    }),
-);
 
 function UpdateCompanyCoupon(): JSX.Element {
 
@@ -42,24 +27,24 @@ function UpdateCompanyCoupon(): JSX.Element {
     const [coupon] = useState(store.getState().CouponsState.coupons.find(c => c.id === couponId));
     const couponInitial = { ...coupon };
 
-    useEffect(() => {
-        if (store.getState().AuthState.user?.clientType !== ClientType.COMPANY) {
-            notify.error("Please log in");
-            history.push("/login");
-        }
-        if (coupon) {
-            setValue("id", couponId);
-            setValue("companyId", coupon.companyId);
-            setValue("title", coupon.title);
-            setValue("category", coupon.category);
-            setValue("price", coupon.price);
-            setValue("amount", coupon.amount);
-            setValue("startDate", coupon.startDate);
-            setValue("endDate", coupon.endDate);
-            setValue("description", coupon.description);
-            setValue("image", coupon.image);
-        }
-    }, [coupon, couponId, setValue]);
+    // useEffect(() => {
+    //     if (store.getState().AuthState.user?.clientType !== ClientType.COMPANY) {
+    //         notify.error("Please log in");
+    //         history.push("/login");
+    //     }
+    //     if (coupon) {
+    //         setValue("id", couponId);
+    //         setValue("companyId", coupon.companyId);
+    //         setValue("title", coupon.title);
+    //         setValue("category", coupon.category);
+    //         setValue("price", coupon.price);
+    //         setValue("amount", coupon.amount);
+    //         setValue("startDate", coupon.startDate);
+    //         setValue("endDate", coupon.endDate);
+    //         setValue("description", coupon.description);
+    //         setValue("image", coupon.image);
+    //     }
+    // }, [coupon, couponId, setValue]);
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
@@ -145,7 +130,10 @@ function UpdateCompanyCoupon(): JSX.Element {
         <div className="UpdateCompanyCoupon">
             <div className="Container">
 
-                <Typography variant="h3" className="Headline"> <Edit /> Update Coupon</Typography>
+                {/* <Edit /> */}
+                <Typography variant="h3" className="Headline">
+                    Update Coupon
+                </Typography>
 
                 <form onSubmit={handleSubmit(send)}>
 
@@ -156,17 +144,16 @@ function UpdateCompanyCoupon(): JSX.Element {
                         fullWidth
                         disabled
                         className={classes.textField}
-                        {...register("title")}
-                        // {...register("title", {
-                        //     required: { value: true, message: "Missing title." },
-                        //     minLength: { value: 4, message: "Title is too short, should be at least 4 characters." },
-                        //     pattern: { value: /^[a-zA-Z0-9]+$/g, message: "Title is not valid, only letters and numbers are permitted." }
-                        // })}
+                        {...register("title", {
+                            required: { value: true, message: "Missing title." },
+                            minLength: { value: 4, message: "Title is too short, should be at least 4 characters." },
+                            pattern: { value: /^[a-zA-Z0-9]+$/g, message: "Title is not valid, only letters and numbers are permitted." }
+                        })}
                         InputProps={{ className: classes.input }}
                         inputProps={{ onChange: handleChange }}
                         defaultValue={coupon?.title}
-                    // error={!!errors.title}
-                    // helperText={errors.title?.message}
+                        error={!!errors.title}
+                        helperText={errors.title?.message}
                     />
                     <br />
 
@@ -339,25 +326,24 @@ function UpdateCompanyCoupon(): JSX.Element {
                         </>
                     }
 
-                    <ButtonGroup className="Group" variant="text" fullWidth>
+                    <ButtonGroup>
+                        {/* <ButtonGroup className="Group" variant="text" fullWidth> */}
 
                         <Button
-                            className="A"
-                            startIcon={<Send />}
+                            // startIcon={<Send />}
                             type="submit"
                             color="primary"
                             variant="contained"
-                        >
+                            className={classes.submit}>
                             Confirm
                         </Button>
 
                         <Button
-                            className="B"
-                            startIcon={<ClearAll />}
+                            // startIcon={<ClearAll />}
                             type="reset"
-                            color="secondary"
+                            color="primary"
                             variant="contained"
-                        >
+                            className={classes.submit}>
                             Reset
                         </Button>
 
@@ -370,3 +356,28 @@ function UpdateCompanyCoupon(): JSX.Element {
 }
 
 export default UpdateCompanyCoupon;
+
+const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+        container: {
+            display: 'flex',
+            flexWrap: 'wrap',
+        },
+        textField: {
+            maxWidth: 250
+        },
+        input: {
+            backgroundColor: '#ffffff',
+        },
+        form: {
+            width: '90%', // Fix IE 11 issue.
+            marginTop: theme.spacing(1),
+        },
+        submit: {
+            margin: theme.spacing(3, 0, 2),
+            marginRight: theme.spacing(2),
+            backgroundColor: theme.palette.primary.main,
+            borderRadius: '0px',
+        },
+    }),
+);
