@@ -48,22 +48,22 @@ function UpdateCompany(): JSX.Element {
         }
     }
 
-    // useEffect(() => {
-    //     try {
-    //         if (store.getState().AuthState.user?.clientType !== ClientType.ADMIN) {
-    //             notify.error("Please log in");
-    //             history.push("/login");
-    //         }
-    //         if (company) {
-    //             setValue("id", company.id);
-    //             setValue("name", company.name);
-    //             setValue("email", company.email);
-    //             setValue("password", company.password);
-    //         }
-    //     } catch (err) {
-    //         notify.error(err);
-    //     }
-    // }, [company, setValue]);
+    useEffect(() => {
+        try {
+            if (store.getState().AuthState.user?.clientType !== ClientType.ADMIN) {
+                notify.error("Please log in");
+                history.push("/login");
+            }
+            if (company) {
+                setValue("id", company.id);
+                setValue("name", company.name);
+                setValue("email", company.email);
+                setValue("password", company.password);
+            }
+        } catch (err) {
+            notify.error(err);
+        }
+    }, [company, setValue]);
 
     async function send(company: CompanyModel) {
         if (!isCompanyDifferent(companyInitial, company)) {
@@ -123,7 +123,6 @@ function UpdateCompany(): JSX.Element {
                         variant="outlined"
                         margin="normal"
                         fullWidth
-                        autoFocus
                         type="email"
                         autoComplete="email"
                         // inputProps={{ pattern: "/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/", }}
