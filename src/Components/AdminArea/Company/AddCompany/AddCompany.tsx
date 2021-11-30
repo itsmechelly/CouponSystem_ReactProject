@@ -3,14 +3,11 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { ButtonGroup } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
-import Add from '@material-ui/core';
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import CompanyModel from "../../../../Models/CompanyModel";
 import "./AddCompany.css";
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { ClearAll, Send } from '@material-ui/icons';
 
 import { useHistory } from "react-router-dom";
 
@@ -22,6 +19,7 @@ function AddCompany(): JSX.Element {
 
     let { register, formState: { errors } } = useForm<CompanyModel>({ mode: "all" });
     const [state, setState] = useState<AddCompanyState>({ showPassword: false });
+    let history = useHistory();
 
     const classes = useStyles();
 
