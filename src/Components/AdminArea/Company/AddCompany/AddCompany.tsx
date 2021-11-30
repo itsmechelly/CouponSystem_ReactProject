@@ -135,7 +135,7 @@ function AddCompany(): JSX.Element {
 
                     <Button
                         type="reset"
-                        color="secondary"
+                        color="primary"
                         variant="contained"
                         // startIcon={<ClearAll />}
                         className={classes.submit}>

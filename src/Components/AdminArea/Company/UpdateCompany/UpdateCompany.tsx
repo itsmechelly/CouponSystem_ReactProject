@@ -1,9 +1,10 @@
-import { Button, ButtonGroup, IconButton, InputAdornment, TextField, Typography } from "@material-ui/core";
+import { Button, ButtonGroup, IconButton, InputAdornment, MenuItem, Select, TextField } from "@material-ui/core";
 import { ClearAll, Edit, Send, Visibility, VisibilityOff } from "@material-ui/icons";
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 import { ChangeEvent, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import CompanyModel from "../../../../Models/CompanyModel";
 import { ClientType } from "../../../../Models/UserModel";
 import { companyUpdatedAction } from "../../../../Redux/CompaniesState";
@@ -13,7 +14,7 @@ import jwtAxios from "../../../../Services/jwtAxios";
 import notify from "../../../../Services/Notification";
 import "./UpdateCompany.css";
 
-interface AddCompanyState {
+interface AddCustomerState {
     showPassword: boolean;
 }
 
@@ -21,7 +22,8 @@ function UpdateCompany(): JSX.Element {
 
     const { register, handleSubmit, formState: { errors }, setValue } = useForm<CompanyModel>({ mode: "all" });
     const history = useHistory();
-    const [state, setState] = useState<AddCompanyState>({ showPassword: false });
+    const [state, setState] = useState<AddCustomerState>({ showPassword: false });
+    const classes = useStyles();
 
     const handleClickShowPassword = () => {
         setState({ ...state, showPassword: !state.showPassword });
@@ -46,29 +48,28 @@ function UpdateCompany(): JSX.Element {
         }
     }
 
-    useEffect(() => {
-        try {
-            if (store.getState().AuthState.user?.clientType !== ClientType.ADMIN) {
-                notify.error("Please log in");
-                history.push("/login");
-            }
-            if (company) {
-                setValue("id", company.id);
-                setValue("name", company.name);
-                setValue("email", company.email);
-                setValue("password", company.password);
-            }
-        } catch (err) {
-            notify.error(err);
-        }
-    }, [company, setValue]);
+    // useEffect(() => {
+    //     try {
+    //         if (store.getState().AuthState.user?.clientType !== ClientType.ADMIN) {
+    //             notify.error("Please log in");
+    //             history.push("/login");
+    //         }
+    //         if (company) {
+    //             setValue("id", company.id);
+    //             setValue("name", company.name);
+    //             setValue("email", company.email);
+    //             setValue("password", company.password);
+    //         }
+    //     } catch (err) {
+    //         notify.error(err);
+    //     }
+    // }, [company, setValue]);
 
     async function send(company: CompanyModel) {
         if (!isCompanyDifferent(companyInitial, company)) {
             notify.error("No changes were made!");
             return;
         }
-
         try {
             const response = await jwtAxios.put<CompanyModel>(globals.urls.updateCompany, company);
             store.dispatch(companyUpdatedAction(response.data));
@@ -92,7 +93,6 @@ function UpdateCompany(): JSX.Element {
                 isDiff = true;
             }
         });
-
         return isDiff;
     }
 
@@ -101,7 +101,7 @@ function UpdateCompany(): JSX.Element {
         <div className="UpdateCompany">
             <div className="Container">
 
-                <Edit />
+                {/* <Edit /> */}
                 <Typography variant="h3" className="Headline">
                     Update Company
                 </Typography>
@@ -126,6 +126,7 @@ function UpdateCompany(): JSX.Element {
                         autoFocus
                         type="email"
                         autoComplete="email"
+                        // inputProps={{ pattern: "/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/", }}
                         {...register("email", {
                             required: { value: true, message: "Missing email." },
                             pattern: { value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/, message: "Email is not valid." }
@@ -142,6 +143,7 @@ function UpdateCompany(): JSX.Element {
                         margin="normal"
                         fullWidth
                         autoComplete="current-password"
+                        // inputProps={{ pattern: "/^[a-zA-Z0-9]+$/gi", minLength: 4, }}
                         {...register("password", {
                             required: { value: true, message: "Missing password." },
                             minLength: { value: 4, message: "Password too short, should be at least 4 characters." },
@@ -151,36 +153,38 @@ function UpdateCompany(): JSX.Element {
                         helperText={errors.password?.message}
                         type={state.showPassword ? 'text' : 'password'}
                         defaultValue={company?.password}
-                        InputProps={{
-                            endAdornment:
-                                <InputAdornment position="end">
-                                    <IconButton
-                                        aria-label="toggle password visibility"
-                                        onClick={handleClickShowPassword} edge="end">
-                                        {state.showPassword ? <Visibility /> : <VisibilityOff />}
-                                    </IconButton>
-                                </InputAdornment>,
-                            onChange: handleChange
-                        }}
+                        inputProps={{ onChange: handleChange }}
+                    // InputProps={{
+                    //     endAdornment:
+                    //         <InputAdornment position="end">
+                    //             <IconButton
+                    //                 aria-label="toggle password visibility"
+                    //                 onClick={handleClickShowPassword} edge="end">
+                    //                 {state.showPassword ? <Visibility /> : <VisibilityOff />}
+                    //             </IconButton>
+                    //         </InputAdornment>,
+                    //     onChange: handleChange
+                    // }}
                     />
 
-                    <ButtonGroup className="Group" variant="text" fullWidth>
+                    <ButtonGroup>
+                        {/* <ButtonGroup variant="text"> */}
 
                         <Button
-                            className="A"
-                            startIcon={<Send />}
+                            // startIcon={<Send />}
                             type="submit"
                             color="primary"
-                            variant="contained">
+                            variant="contained"
+                            className={classes.submit}>
                             Confirm
                         </Button>
 
                         <Button
-                            className="B"
-                            startIcon={<ClearAll />}
+                            // startIcon={<ClearAll />}
                             type="reset"
-                            color="secondary"
-                            variant="contained">
+                            color="primary"
+                            variant="contained"
+                            className={classes.submit}>
                             Reset
                         </Button>
 
@@ -194,3 +198,30 @@ function UpdateCompany(): JSX.Element {
 }
 
 export default UpdateCompany;
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        height: '100vh',
+    },
+    paper: {
+        margin: theme.spacing(8, 4),
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        height: '(100vh - 40px)',
+    },
+    avatar: {
+        margin: theme.spacing(1),
+        backgroundColor: theme.palette.primary.main,
+    },
+    form: {
+        width: '90%', // Fix IE 11 issue.
+        marginTop: theme.spacing(1),
+    },
+    submit: {
+        margin: theme.spacing(3, 0, 2),
+        marginRight: theme.spacing(2),
+        backgroundColor: theme.palette.primary.main,
+        borderRadius: '0px',
+    },
+}));
