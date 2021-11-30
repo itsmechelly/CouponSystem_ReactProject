@@ -3,6 +3,8 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { ButtonGroup } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
+import ClearAllIcon from '@material-ui/icons/ClearAll';
+import SendIcon from '@material-ui/icons/Send';
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
@@ -14,6 +16,7 @@ import CompanyModel from "../../../../Models/CompanyModel";
 import { companyAddedAction } from '../../../../Redux/CompaniesState';
 import "./AddCompany.css";
 import { ClientType } from '../../../../Models/UserModel';
+import { AddCircleOutlined } from '@material-ui/icons';
 
 interface AddCompanyState {
     showPassword: boolean;
@@ -55,7 +58,7 @@ function AddCompany(): JSX.Element {
     return (
         <div className="AddCompany">
 
-            {/* <Add /> */}
+            <AddCircleOutlined />
             <Typography variant="h3" className="Headline">
                 Add Company
             </Typography>
@@ -125,7 +128,7 @@ function AddCompany(): JSX.Element {
                         type="submit"
                         color="primary"
                         variant="contained"
-                        // startIcon={<Send />}
+                        startIcon={<SendIcon />}
                         className={classes.submit}>
                         Confirm
                     </Button>
@@ -134,7 +137,7 @@ function AddCompany(): JSX.Element {
                         type="reset"
                         color="primary"
                         variant="contained"
-                        // startIcon={<ClearAll />}
+                        startIcon={<ClearAllIcon />}
                         className={classes.submit}>
                         Reset
                     </Button>
