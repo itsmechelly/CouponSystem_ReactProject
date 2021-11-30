@@ -2,6 +2,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { ButtonGroup } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
+import Add from '@material-ui/core';
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -9,6 +11,8 @@ import CompanyModel from "../../../../Models/CompanyModel";
 import "./AddCompany.css";
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { ClearAll, Send } from '@material-ui/icons';
+
+import { useHistory } from "react-router-dom";
 
 interface AddCompanyState {
     showPassword: boolean;
@@ -28,7 +32,10 @@ function AddCompany(): JSX.Element {
     return (
         <div className="AddCompany">
 
-            <h1>BH</h1>
+            {/* <Add /> */}
+            <Typography variant="h3" className="Headline">
+                Add Company
+            </Typography>
 
             <form>
 
@@ -97,16 +104,16 @@ function AddCompany(): JSX.Element {
                         type="submit"
                         color="primary"
                         variant="contained"
-                        startIcon={<Send />}
+                        // startIcon={<Send />}
                         className={classes.submit}>
                         Confirm
                     </Button>
-                    <br />
+
                     <Button
                         type="reset"
                         color="secondary"
                         variant="contained"
-                        startIcon={<ClearAll />}
+                        // startIcon={<ClearAll />}
                         className={classes.submit}>
                         Reset
                     </Button>
