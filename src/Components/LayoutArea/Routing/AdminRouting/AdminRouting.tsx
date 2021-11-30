@@ -24,7 +24,6 @@ function AdminRouting(): JSX.Element {
                 <Route path="/admin/getAllCompanies" component={GetAllCompanies} exact />
 
                 <Route path="/admin/addCustomer" component={AddCustomer} exact />
-                {/* po */}
                 <Route path="/admin/updateCustomer/:id" component={UpdateCustomer} exact />
                 <Route path="/admin/deleteCustomer" component={DeleteCustomer} exact />
                 <Route path="/admin/getOneCustomer/:id" component={GetOneCustomer} exact />
