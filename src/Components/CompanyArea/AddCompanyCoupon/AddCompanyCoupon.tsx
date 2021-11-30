@@ -21,12 +21,12 @@ function AddCompanyCoupon(): JSX.Element {
     const history = useHistory();
     const classes = useStyles();
 
-    // useEffect(() => {
-    //     if (store.getState().AuthState.user?.clientType !== ClientType.COMPANY) {
-    //         notify.error("Please log in");
-    //         history.push("/login");
-    //     }
-    // }, []);
+    useEffect(() => {
+        if (store.getState().AuthState.user?.clientType !== ClientType.COMPANY) {
+            notify.error("Please log in");
+            history.push("/login");
+        }
+    }, []);
 
     async function send(coupon: CouponModel) {
 
