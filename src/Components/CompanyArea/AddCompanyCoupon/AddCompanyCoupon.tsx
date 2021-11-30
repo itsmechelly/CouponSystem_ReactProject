@@ -1,5 +1,6 @@
 import { Button, ButtonGroup, FormControl, FormHelperText, TextField } from "@material-ui/core";
-import { Add, ClearAll, Send } from "@material-ui/icons";
+import { ClearAll, Send } from "@material-ui/icons";
+import AddIcon from '@material-ui/icons/Add';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { useEffect } from "react";
@@ -58,7 +59,7 @@ function AddCompanyCoupon(): JSX.Element {
         <div className="AddCompanyCoupon">
             <div className="Container">
 
-                {/* <Add /> */}
+                <AddIcon />
                 <Typography variant="h3" className="Headline">
                     Add Company Coupon
                 </Typography>
