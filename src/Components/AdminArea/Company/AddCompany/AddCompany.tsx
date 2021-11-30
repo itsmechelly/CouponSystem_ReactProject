@@ -1,5 +1,7 @@
-import { Button, TextField, Typography } from "@material-ui/core";
-import { ClearAll, Send } from "@material-ui/icons";
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import CompanyModel from "../../../../Models/CompanyModel";
@@ -13,6 +15,8 @@ function AddCompany(): JSX.Element {
 
     let { register, formState: { errors } } = useForm<CompanyModel>({ mode: "all" });
     const [state, setState] = useState<AddCompanyState>({ showPassword: false });
+
+    const classes = useStyles();
 
     const handleClickShowPassword = () => {
         setState({ ...state, showPassword: !state.showPassword });
@@ -84,27 +88,14 @@ function AddCompany(): JSX.Element {
                     helperText={errors.password?.message}
                 />
 
-                {/* <ButtonGroup className="Group" variant="text" fullWidth> */}
-
-                    <Button
-                        className="A"
-                        startIcon={<Send />}
-                        type="submit"
-                        color="primary"
-                        variant="contained">
-                        Confirm
-                    </Button>
-
-                    <Button
-                        className="B"
-                        startIcon={<ClearAll />}
-                        type="reset"
-                        color="secondary"
-                        variant="contained">
-                        Reset
-                    </Button>
-
-                {/* </ButtonGroup> */}
+                <Button
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    color="primary"
+                    className={classes.submit}>
+                    Sign In
+                </Button>
 
             </form>
         </div >
@@ -112,3 +103,27 @@ function AddCompany(): JSX.Element {
 }
 
 export default AddCompany;
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        height: '100vh',
+    },
+    paper: {
+        margin: theme.spacing(8, 4),
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        height: '(100vh - 40px)',
+    },
+    avatar: {
+        margin: theme.spacing(1),
+        backgroundColor: theme.palette.primary.main,
+    },
+    form: {
+        width: '90%', // Fix IE 11 issue.
+        marginTop: theme.spacing(1),
+    },
+    submit: {
+        margin: theme.spacing(3, 0, 2),
+    },
+}));
