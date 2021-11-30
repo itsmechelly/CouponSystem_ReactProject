@@ -27,24 +27,24 @@ function UpdateCompanyCoupon(): JSX.Element {
     const [coupon] = useState(store.getState().CouponsState.coupons.find(c => c.id === couponId));
     const couponInitial = { ...coupon };
 
-    // useEffect(() => {
-    //     if (store.getState().AuthState.user?.clientType !== ClientType.COMPANY) {
-    //         notify.error("Please log in");
-    //         history.push("/login");
-    //     }
-    //     if (coupon) {
-    //         setValue("id", couponId);
-    //         setValue("companyId", coupon.companyId);
-    //         setValue("title", coupon.title);
-    //         setValue("category", coupon.category);
-    //         setValue("price", coupon.price);
-    //         setValue("amount", coupon.amount);
-    //         setValue("startDate", coupon.startDate);
-    //         setValue("endDate", coupon.endDate);
-    //         setValue("description", coupon.description);
-    //         setValue("image", coupon.image);
-    //     }
-    // }, [coupon, couponId, setValue]);
+    useEffect(() => {
+        if (store.getState().AuthState.user?.clientType !== ClientType.COMPANY) {
+            notify.error("Please log in");
+            history.push("/login");
+        }
+        if (coupon) {
+            setValue("id", couponId);
+            setValue("companyId", coupon.companyId);
+            setValue("title", coupon.title);
+            setValue("category", coupon.category);
+            setValue("price", coupon.price);
+            setValue("amount", coupon.amount);
+            setValue("startDate", coupon.startDate);
+            setValue("endDate", coupon.endDate);
+            setValue("description", coupon.description);
+            setValue("image", coupon.image);
+        }
+    }, [coupon, couponId, setValue]);
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
