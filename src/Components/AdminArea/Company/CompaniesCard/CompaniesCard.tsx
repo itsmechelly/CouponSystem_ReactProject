@@ -38,7 +38,7 @@ function CompaniesCard(props: CompaniesCardProps): JSX.Element {
                 <div className="Column">
                     <div className="Card">
 
-                        <img className="CompanyImg" src={happy} alt="Company Image" />
+                        <img className="CompanyImg" src={happy} alt="Company Happy" />
 
                         <div className="Container">
                             <div className="CardData">
