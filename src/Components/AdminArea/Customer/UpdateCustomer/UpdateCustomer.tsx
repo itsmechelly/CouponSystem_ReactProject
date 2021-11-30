@@ -51,23 +51,23 @@ function UpdateCustomer(): JSX.Element {
         }
     }
 
-    // useEffect(() => {
-    //     try {
-    //         if (store.getState().AuthState.user?.clientType !== ClientType.ADMIN) {
-    //             notify.error("Please log in");
-    //             history.push("/login");
-    //         }
-    //         if (customer) {
-    //             setValue("id", customer.id);
-    //             setValue("firstName", customer.firstName);
-    //             setValue("lastName", customer.lastName);
-    //             setValue("email", customer.email);
-    //             setValue("password", customer.password);
-    //         }
-    //     } catch (err) {
-    //         notify.error(err);
-    //     }
-    // }, [customer, setValue]);
+    useEffect(() => {
+        try {
+            if (store.getState().AuthState.user?.clientType !== ClientType.ADMIN) {
+                notify.error("Please log in");
+                history.push("/login");
+            }
+            if (customer) {
+                setValue("id", customer.id);
+                setValue("firstName", customer.firstName);
+                setValue("lastName", customer.lastName);
+                setValue("email", customer.email);
+                setValue("password", customer.password);
+            }
+        } catch (err) {
+            notify.error(err);
+        }
+    }, [customer, setValue]);
 
     async function send(customer: CustomerModel) {
         if (!isCustomerDifferent(customerInitial, customer)) {
