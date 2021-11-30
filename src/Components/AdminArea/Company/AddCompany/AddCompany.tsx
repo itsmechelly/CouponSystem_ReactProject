@@ -13,6 +13,10 @@ function AddCompany(): JSX.Element {
     let { register, formState: { errors } } = useForm<CompanyModel>({ mode: "all" });
     const [state, setState] = useState<AddCompanyState>({ showPassword: false });
 
+    const handleClickShowPassword = () => {
+        setState({ ...state, showPassword: !state.showPassword });
+    };
+
     return (
         <div className="AddCompany">
 
