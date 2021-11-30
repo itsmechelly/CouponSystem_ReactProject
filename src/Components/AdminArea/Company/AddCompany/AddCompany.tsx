@@ -1,6 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { ButtonGroup } from '@material-ui/core';
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -88,14 +89,27 @@ function AddCompany(): JSX.Element {
                     helperText={errors.password?.message}
                 />
 
-                <Button
-                    type="submit"
-                    fullWidth
-                    variant="contained"
-                    color="primary"
-                    className={classes.submit}>
-                    Sign In
-                </Button>
+                <ButtonGroup>
+
+                    <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        color="primary"
+                        className={classes.submit}>
+                        Sign In
+                    </Button>
+                    
+                    <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        color="primary"
+                        className={classes.submit}>
+                        Sign Out
+                    </Button>
+
+                </ButtonGroup>
 
             </form>
         </div >
