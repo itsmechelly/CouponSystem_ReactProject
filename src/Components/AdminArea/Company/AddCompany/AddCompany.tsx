@@ -3,7 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { ButtonGroup } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import store from '../../../../Redux/Store';
@@ -13,6 +13,7 @@ import notify from '../../../../Services/Notification';
 import CompanyModel from "../../../../Models/CompanyModel";
 import { companyAddedAction } from '../../../../Redux/CompaniesState';
 import "./AddCompany.css";
+import { ClientType } from '../../../../Models/UserModel';
 
 interface AddCompanyState {
     showPassword: boolean;
@@ -24,6 +25,13 @@ function AddCompany(): JSX.Element {
     const [state, setState] = useState<AddCompanyState>({ showPassword: false });
     let history = useHistory();
     const classes = useStyles();
+
+    useEffect(() => {
+        if (store.getState().AuthState.user?.clientType !== ClientType.ADMIN) {
+            notify.error("Please log in");
+            history.push("/login");
+        }
+    }, []);
 
     const handleClickShowPassword = () => {
         setState({ ...state, showPassword: !state.showPassword });
@@ -114,6 +122,7 @@ function AddCompany(): JSX.Element {
                 />
 
                 <ButtonGroup>
+                    {/* <ButtonGroup variant="text"> */}
 
                     <Button
                         type="submit"
