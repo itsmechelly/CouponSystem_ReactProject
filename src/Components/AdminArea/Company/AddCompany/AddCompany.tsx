@@ -1,4 +1,5 @@
-import { TextField, Typography } from "@material-ui/core";
+import { Button, ButtonGroup, TextField, Typography } from "@material-ui/core";
+import { ClearAll, Send } from "@material-ui/icons";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import CompanyModel from "../../../../Models/CompanyModel";
@@ -82,6 +83,28 @@ function AddCompany(): JSX.Element {
                     error={!!errors.password}
                     helperText={errors.password?.message}
                 />
+
+                <ButtonGroup className="Group" variant="text" fullWidth>
+
+                    <Button
+                        className="A"
+                        startIcon={<Send />}
+                        type="submit"
+                        color="primary"
+                        variant="contained">
+                        Confirm
+                    </Button>
+
+                    <Button
+                        className="B"
+                        startIcon={<ClearAll />}
+                        type="reset"
+                        color="secondary"
+                        variant="contained">
+                        Reset
+                    </Button>
+
+                </ButtonGroup>
 
             </form>
         </div >
