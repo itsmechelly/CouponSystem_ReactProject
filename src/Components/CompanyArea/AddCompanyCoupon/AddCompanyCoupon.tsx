@@ -1,7 +1,8 @@
 import { Button, ButtonGroup, FormControl, FormHelperText, TextField } from "@material-ui/core";
-import { ClearAll, Send } from "@material-ui/icons";
 import AddIcon from '@material-ui/icons/Add';
 import Typography from '@material-ui/core/Typography';
+import ClearAllIcon from '@material-ui/icons/ClearAll';
+import SendIcon from '@material-ui/icons/Send';
 import { makeStyles } from '@material-ui/core/styles';
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
@@ -227,7 +228,7 @@ function AddCompanyCoupon(): JSX.Element {
                         {/* <ButtonGroup className="Group" variant="text" fullWidth> */}
 
                         <Button
-                            // startIcon={<Send />}
+                            startIcon={<SendIcon />}
                             type="submit"
                             color="primary"
                             variant="contained"
@@ -236,7 +237,7 @@ function AddCompanyCoupon(): JSX.Element {
                         </Button>
 
                         <Button
-                            // startIcon={<ClearAll />}
+                            startIcon={<ClearAllIcon />}
                             type="reset"
                             color="secondary"
                             variant="contained"
