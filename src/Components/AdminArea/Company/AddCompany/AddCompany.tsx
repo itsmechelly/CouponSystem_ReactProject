@@ -1,3 +1,5 @@
+import { Typography } from "@material-ui/core";
+import { Add } from "@material-ui/icons";
 import "./AddCompany.css";
 
 function AddCompany(): JSX.Element {
@@ -7,6 +9,11 @@ function AddCompany(): JSX.Element {
 
                 <h1>BH</h1>
 
+                <Add />
+                <Typography variant="h3" className="Headline">
+                    Add Company
+                </Typography>
+                
         </div >
     );
 }
