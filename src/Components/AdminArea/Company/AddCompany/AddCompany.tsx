@@ -14,17 +14,15 @@ import CompanyModel from "../../../../Models/CompanyModel";
 import { companyAddedAction } from '../../../../Redux/CompaniesState';
 import "./AddCompany.css";
 
-
 interface AddCompanyState {
     showPassword: boolean;
 }
 
 function AddCompany(): JSX.Element {
 
-    let { register, formState: { errors } } = useForm<CompanyModel>({ mode: "all" });
+    let { register, handleSubmit, formState: { errors } } = useForm<CompanyModel>({ mode: "all" });
     const [state, setState] = useState<AddCompanyState>({ showPassword: false });
     let history = useHistory();
-
     const classes = useStyles();
 
     const handleClickShowPassword = () => {
@@ -54,7 +52,7 @@ function AddCompany(): JSX.Element {
                 Add Company
             </Typography>
 
-            <form>
+            <form onSubmit={handleSubmit(send)}>
 
                 <TextField
                     label="Company Name"
