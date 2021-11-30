@@ -3,6 +3,13 @@
     box-sizing: border-box;
 }
 
+.GetAllCompanies > .CompaniesStyle {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
 *, *:before, *:after {
     box-sizing: inherit;
 }
