@@ -1,9 +1,10 @@
-import { Button, ButtonGroup, IconButton, InputAdornment, TextField, Typography } from "@material-ui/core";
+import { Button, ButtonGroup, IconButton, InputAdornment, TextField } from "@material-ui/core";
 import { Add, ClearAll, Edit, Send, Visibility, VisibilityOff } from "@material-ui/icons";
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
 import { ChangeEvent, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import CustomerModel from "../../../../Models/CustomerModel";
 import { ClientType } from "../../../../Models/UserModel";
 import { customerUpdatedAction } from "../../../../Redux/CustomersState";
@@ -22,6 +23,7 @@ function UpdateCustomer(): JSX.Element {
     const { register, handleSubmit, formState: { errors }, setValue } = useForm<CustomerModel>({ mode: "all" });
     const history = useHistory();
     const [state, setState] = useState<AddCustomerState>({ showPassword: false });
+    const classes = useStyles();
 
     const handleClickShowPassword = () => {
         setState({ ...state, showPassword: !state.showPassword });
@@ -49,30 +51,29 @@ function UpdateCustomer(): JSX.Element {
         }
     }
 
-    useEffect(() => {
-        try {
-            if (store.getState().AuthState.user?.clientType !== ClientType.ADMIN) {
-                notify.error("Please log in");
-                history.push("/login");
-            }
-            if (customer) {
-                setValue("id", customer.id);
-                setValue("firstName", customer.firstName);
-                setValue("lastName", customer.lastName);
-                setValue("email", customer.email);
-                setValue("password", customer.password);
-            }
-        } catch (err) {
-            notify.error(err);
-        }
-    }, [customer, setValue]);
+    // useEffect(() => {
+    //     try {
+    //         if (store.getState().AuthState.user?.clientType !== ClientType.ADMIN) {
+    //             notify.error("Please log in");
+    //             history.push("/login");
+    //         }
+    //         if (customer) {
+    //             setValue("id", customer.id);
+    //             setValue("firstName", customer.firstName);
+    //             setValue("lastName", customer.lastName);
+    //             setValue("email", customer.email);
+    //             setValue("password", customer.password);
+    //         }
+    //     } catch (err) {
+    //         notify.error(err);
+    //     }
+    // }, [customer, setValue]);
 
     async function send(customer: CustomerModel) {
         if (!isCustomerDifferent(customerInitial, customer)) {
             notify.error("No changes were made!");
             return;
         }
-
         try {
             const response = await jwtAxios.put<CustomerModel>(globals.urls.updateCustomer, customer);
             store.dispatch(customerUpdatedAction(response.data));
@@ -104,7 +105,8 @@ function UpdateCustomer(): JSX.Element {
         <div className="UpdateCustomer">
             <div className="Container">
 
-                <Typography variant="h3" className="Headline"><Edit />
+                <Typography variant="h3" className="Headline">
+                    {/* <Edit /> */}
                     Update Customer
                 </Typography>
 
@@ -176,39 +178,41 @@ function UpdateCustomer(): JSX.Element {
                         })}
                         type={state.showPassword ? 'text' : 'password'}
                         defaultValue={customer?.password}
-                        InputProps={{
-                            endAdornment:
-                                <InputAdornment position="end">
-                                    <IconButton
-                                        aria-label="toggle password visibility"
-                                        onClick={handleClickShowPassword} edge="end">
-                                        {state.showPassword ? <Visibility /> : <VisibilityOff />}
-                                    </IconButton>
-                                </InputAdornment>,
-                            onChange: handleChange
-                        }}
+                        inputProps={{ onChange: handleChange }}
+                        // InputProps={{
+                        //     endAdornment:
+                        //         <InputAdornment position="end">
+                        //             <IconButton
+                        //                 aria-label="toggle password visibility"
+                        //                 onClick={handleClickShowPassword} edge="end">
+                        //                 {state.showPassword ? <Visibility /> : <VisibilityOff />}
+                        //             </IconButton>
+                        //         </InputAdornment>,
+                        //     onChange: handleChange
+                        // }}
                         error={!!errors.password}
                         helperText={errors.password?.message}
                     />
                     <br />
 
-                    <ButtonGroup className="Group" variant="text" fullWidth>
+                    <ButtonGroup>
+                        {/* <ButtonGroup className="Group" variant="text" fullWidth> */}
 
                         <Button
-                            className="A"
-                            startIcon={<Send />}
+                            // startIcon={<Send />}
                             type="submit"
                             color="primary"
-                            variant="contained">
+                            variant="contained"
+                            className={classes.submit}>
                             Confirm
                         </Button>
 
                         <Button
-                            className="B"
-                            startIcon={<ClearAll />}
+                            // startIcon={<ClearAll />}
                             type="reset"
-                            color="secondary"
-                            variant="contained">
+                            color="primary"
+                            variant="contained"
+                            className={classes.submit}>
                             Reset
                         </Button>
 
@@ -222,3 +226,30 @@ function UpdateCustomer(): JSX.Element {
 }
 
 export default UpdateCustomer;
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        height: '100vh',
+    },
+    paper: {
+        margin: theme.spacing(8, 4),
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        height: '(100vh - 40px)',
+    },
+    avatar: {
+        margin: theme.spacing(1),
+        backgroundColor: theme.palette.primary.main,
+    },
+    form: {
+        width: '90%', // Fix IE 11 issue.
+        marginTop: theme.spacing(1),
+    },
+    submit: {
+        margin: theme.spacing(3, 0, 2),
+        marginRight: theme.spacing(2),
+        backgroundColor: theme.palette.primary.main,
+        borderRadius: '0px',
+    },
+}));

@@ -25,12 +25,12 @@ function AddCustomer(): JSX.Element {
     const [state, setState] = useState<AddCustomerState>({ showPassword: false });
     const classes = useStyles();
 
-    // useEffect(() => {
-    //     if (store.getState().AuthState.user?.clientType !== ClientType.ADMIN) {
-    //         notify.error("Please log in");
-    //         history.push("/login");
-    //     }
-    // }, []);
+    useEffect(() => {
+        if (store.getState().AuthState.user?.clientType !== ClientType.ADMIN) {
+            notify.error("Please log in");
+            history.push("/login");
+        }
+    }, []);
 
     const handleClickShowPassword = () => {
         setState({ ...state, showPassword: !state.showPassword });
