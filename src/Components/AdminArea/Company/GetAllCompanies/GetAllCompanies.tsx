@@ -74,7 +74,8 @@ function GetAllCompanies(): JSX.Element {
 
             {companies &&
                 <>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center' }}>
+                    {/* <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center' }}> */}
+                    <div>
                         {companies.map(company => (<CompaniesCard key={company.id} company={company} />))}
                     </div>
                     <br />
