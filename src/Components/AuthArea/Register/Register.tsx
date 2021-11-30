@@ -14,7 +14,7 @@ import "./Register.css";
 import CustomerModel from "../../../Models/CustomerModel";
 import jwtAxios from "../../../Services/jwtAxios";
 import { customerAddedAction } from "../../../Redux/CustomersState";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface AddCustomerState {
     showPassword: boolean;
@@ -26,6 +26,13 @@ function Register(): JSX.Element {
     let history = useHistory();
     const [state, setState] = useState<AddCustomerState>({ showPassword: false });
     const classes = useStyles();
+
+    useEffect(() => {
+        notify.success("NOTICE! Will be activated soon. Meanwhile USE:");
+        notify.success("Admin: admin@admin.com admin");
+        notify.success("Company: zootAllures@company.com zootAllures");
+        notify.success("Customer: cust1@cust.com 1111");
+    }, []);
 
     const handleClickShowPassword = () => {
         setState({ ...state, showPassword: !state.showPassword });
@@ -101,7 +108,7 @@ function Register(): JSX.Element {
                             autoComplete="email"
                             {...register("email", {
                                 required: { value: true, message: "Missing email." },
-                                pattern: { value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/, message: "Email is not valid." }
+                                pattern: { value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(?: \.[a-zA-Z0-9-]+)*$/, message: "Email is not valid." }
                             })}
                             error={!!errors.email}
                             helperText={errors.email?.message}
