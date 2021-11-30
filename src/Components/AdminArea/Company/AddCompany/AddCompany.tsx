@@ -96,17 +96,16 @@ function AddCompany(): JSX.Element {
                         color="primary"
                         variant="contained"
 
-                        
                         className={classes.submit}>
                         Confirm
                     </Button>
-                    
+                    <br />
                     <Button
                         type="reset"
                         color="secondary"
                         variant="contained"
 
-                        
+
                         className={classes.submit}>
                         Reset
                     </Button>
@@ -141,6 +140,8 @@ const useStyles = makeStyles((theme) => ({
     },
     submit: {
         margin: theme.spacing(3, 0, 2),
+        marginRight: theme.spacing(2),
         backgroundColor: theme.palette.primary.main,
+        borderRadius: '0px',
     },
 }));
