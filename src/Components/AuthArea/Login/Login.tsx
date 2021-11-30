@@ -1,7 +1,7 @@
 import { InputAdornment, MenuItem, Select } from "@material-ui/core";
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import CredentialsModel from "../../../Models/CredentialsModel";
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+// import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import loginImage from "../../../Assets/Images/Login.jpg";
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { loginAction } from "../../../Redux/AuthState";
@@ -68,7 +68,7 @@ function Login(): JSX.Element {
                 <div className={classes.paper}>
 
                     <Avatar className={classes.avatar}>
-                        <LockOutlinedIcon />
+                        {/* <LockOutlinedIcon /> */}
                     </Avatar>
 
                     <Typography component="h1" variant="h5">
@@ -106,13 +106,13 @@ function Login(): JSX.Element {
                                 pattern: { value: /^[a-zA-Z0-9]+$/gi, message: "Password is not valid, only letters and numbers are permitted." }
                             })}
                             type={state.showPassword ? 'text' : 'password'}
-                            // inputProps={{
+                            // InputProps={{
                             //     endAdornment:
                             //         <InputAdornment position="end">
                             //             <IconButton
                             //                 aria-label="toggle password visibility"
                             //                 onClick={handleClickShowPassword} edge="end">
-                            //                 {state.showPassword ? <Visibility /> : <VisibilityOff />}
+                            //                 {showPassword ? <Visibility /> : <VisibilityOff />}
                             //             </IconButton>
                             //         </InputAdornment>,
                             // }}

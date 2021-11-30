@@ -14,7 +14,7 @@ import CompanyModel from "../../../../Models/CompanyModel";
 import { companyAddedAction } from '../../../../Redux/CompaniesState';
 import "./AddCompany.css";
 import { ClientType } from '../../../../Models/UserModel';
-import { AddCircleOutlined } from '@material-ui/icons';
+// import { AddCircleOutlined } from '@material-ui/icons';
 
 interface AddCompanyState {
     showPassword: boolean;
@@ -56,7 +56,7 @@ function AddCompany(): JSX.Element {
     return (
         <div className="AddCompany">
 
-            <AddCircleOutlined />
+            {/* <AddCircleOutlined /> */}
             <Typography variant="h3" className="Headline">
                 Add Company
             </Typography>
