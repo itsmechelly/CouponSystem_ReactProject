@@ -44,7 +44,7 @@ To store data in the database I used Spring Hibernate JPA(SQL).<br/>
 For the authentication & authorization I used the JWT technique.<br/>
 
 👉 Click here to see this project on Github:
-https://github.com/itsmechelly/CouponSystem_SpringProject_JwtTechnique<br/><br/>
+https://github.com/itsmechelly/coupon-system-server<br/><br/>
 👉 NOTE: this project is the final version and deployed to AWS cloud, click to browse the website:<br/>
 LINK WILL BE ADDED SOON
 <br/><br/>
